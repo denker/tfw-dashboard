@@ -6,28 +6,3 @@
     Purpose of the stylesheet follows.
     To change this template use Tools | Templates.
 */
-
-body {
-    font-family: Verdana, sans-serif;
-    text-align: center;
-    width: 600px;
-    margin: 20px auto;
-}
-h1 {
-    margin-bottom:25px;
-}
-.small-box {
-    width: 50%;
-    float:left;
-    color:#777;
-    margin-bottom:25px;
-}
-p.number {
-    font-weight: bold;
-}
-.small-box p.number {
-    font-size:2em;
-}
-.big-box p.number {
-    font-size:4em;
-}

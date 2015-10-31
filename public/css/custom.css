@@ -6,3 +6,16 @@
     Purpose of the stylesheet follows.
     To change this template use Tools | Templates.
 */
+
+table {
+  width: 800px;
+}
+
+.heading {
+  background-color: #aaa;
+  text-align: center;
+}
+
+input {
+  width: 90px;
+}

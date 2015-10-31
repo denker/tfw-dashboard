@@ -1,15 +1,16 @@
 require 'sinatra'
 require 'slim'
-require 'data_mapper'
-
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
-
-class Visit
-  include DataMapper::Resource
-end
-
-DataMapper.finalize
+require './datamapper_models' # file with require DataMapper and decriptions of all models
 
 get '/' do
-  
+  @visits = Visit.all
+  slim :index
+end
+
+post '/' do
+  puts params[:visit]
+  visit = Visit.new params[:visit]
+  visit.time_start = Time.now
+  visit.save
+  redirect to('/')
 end

@@ -7,9 +7,9 @@ class Visit
   property :id, Serial
   property :time_start, DateTime, :required => true
   property :time_end, DateTime
-  property :male, Integer, :required => true
-  property :female, Integer, :required => true
-  property :revenue, Integer, :required => true
+  property :male, Integer
+  property :female, Integer
+  property :revenue, Integer
   property :tips, Integer, :default => 0
   property :comment, String
   property :payed_by_card, Boolean, :default => false
@@ -18,7 +18,7 @@ end
 
 class Test
   include DataMapper::Resource
-  property :id, Serial 
+  property :id, Serial
   property :text, String
 end
 

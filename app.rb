@@ -1,37 +1,21 @@
 require 'sinatra'
 require 'slim'
-require './datamapper_models' # file with require DataMapper and decriptions of all models
 
-get '/visits' do
-  @visits = Visit.all
-  #@edit_id = 0
-  slim :visits
-end
+# file with require DataMapper and decriptions of all models
+require './datamapper_models'
 
-get '/visits/:id' do
-  @visits = Visit.all
-  @edit_id = params[:id]
-  slim :visits
-end
+# contorollers for Visit model and /visits/ views
+require './visits'
 
-post '/visits' do
-  visit = Visit.new params[:visit]
-  visit.time_start = Time.now
-  visit.save
-  redirect to('/visits')
-end
+get '/' do
+  today = Date.today
+  date_delimeter = Time.new(today.year, today.month, today.day, 12, 0)
+  date_start = Time.now >= date_delimeter ? date_delimeter : date_delimeter - 86400
+  dm_params = { :time_start.gte => date_start, :time_start.lt => date_start + 86400 }
 
-put '/visits/:id' do
-  visit = Visit.get(params[:id])
-  visit.time_end = Time.now
-  visit.attributes = params[:visit] # ТУТ НЕ РАБОТАЕТ!!!
-  puts visit.id
-  puts visit.save
-  redirect to('/visits')
-end
+  @total = Visit.sum(:revenue, dm_params).to_i
+  @guests = Visit.sum(:male, dm_params).to_i + Visit.sum(:female, dm_params).to_i
+  @checks = Visit.count(:revenue, dm_params)
 
-delete '/visits/:id' do
-  visit = Visit.get(params[:id])
-  visit.destroy!
-  redirect to('/visits')
+  slim :index
 end

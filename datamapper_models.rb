@@ -7,9 +7,9 @@ class Visit
   property :id, Serial
   property :time_start, DateTime, :required => true
   property :time_end, DateTime
-  property :male, Integer
-  property :female, Integer
-  property :revenue, Integer
+  property :male, Integer, :default => 0
+  property :female, Integer, :default => 0
+  property :revenue, Integer, :default => 0
   property :tips, Integer, :default => 0
   property :comment, String
   property :payed_by_card, Boolean, :default => false

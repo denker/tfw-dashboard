@@ -1,10 +1,24 @@
-h2= "Date: #{@work_date}"
-.small-number
-  p.number= @checks
-  p.label Checks
-.small-number
-  p.number= @guests
-  p.label Guests
-.big-number
-  p.number= @total
-  p.label Revenue
+.period-nav
+  - ['month', 'week', 'day'].each do |type|
+    div class="#{type}"
+      - if type == @view_type
+        span= type.capitalize
+      - else
+        a href="#" 
+          = type.capitalize      
+
+.period
+  a href="#{@prev_link}" <<
+  span= "#{@period}"
+  a href="#{@next_link}" >>
+
+.stats
+  .small-number
+    p.number= @checks
+    p.label Checks
+  .small-number
+    p.number= @guests
+    p.label Guests
+  .big-number
+    p.number= @total
+    p.label Revenue

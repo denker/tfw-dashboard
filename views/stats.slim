@@ -1,15 +1,15 @@
-.period-nav
-  - ['month', 'week', 'day'].each do |type|
+.interval-selector
+  - ['year', 'month', 'week', 'day'].each do |type|
     div class="#{type}"
-      - if type == @view_type
+      - if type == @interval
         span= type.capitalize
       - else
-        a href="#" 
+        a href= @interval_options[type]
           = type.capitalize      
 
-.period
+.interval-header
   a href="#{@prev_link}" <<
-  span= "#{@period}"
+  span= "#{@interval_title}"
   a href="#{@next_link}" >>
 
 .stats

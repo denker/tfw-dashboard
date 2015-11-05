@@ -21,14 +21,14 @@ end
 post '/visits/new' do
   params[:visit].each { |k,v| params[:visit][k] = v.to_i }
   visit = Visit.new params[:visit]
-  visit.time_start = Time.now
+  visit.time_start = DateTime.now
   visit.save
   redirect to('/visits')
 end
 
 put '/visits/:id' do
   visit = Visit.get(params[:id])
-  visit.time_end = Time.now
+  visit.time_end = DateTime.now
   visit.attributes = params[:visit]
   visit.save
   redirect to('/visits')

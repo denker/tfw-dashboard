@@ -1,24 +1,28 @@
-.interval-selector
-  - ['year', 'month', 'week', 'day'].each do |type|
-    div class="#{type}"
-      - if type == @interval
-        span= type.capitalize
-      - else
-        a href= @interval_options[type]
-          = type.capitalize      
-
-.interval-header
-  a href="#{@prev_link}" <<
-  span= "#{@interval_title}"
-  a href="#{@next_link}" >>
-
 .stats
-  .small-number
-    p.number= @checks
-    p.label Checks
-  .small-number
-    p.number= @guests
-    p.label Guests
-  .big-number
-    p.number= @total
-    p.label Revenue
+  .interval-selector
+    - ['year', 'month', 'week', 'day'].each do |type|
+      .interval-link
+        - if type == @interval
+          strong= type.capitalize
+        - else
+          a href= @interval_options[type]
+            = type.capitalize      
+            
+  .interval-header
+    .interval-link
+      a href="#{@prev_link}" <<
+    .interval-title
+      span= "#{@interval_title}"
+    .interval-link
+      a href="#{@next_link}" >>
+            
+  .stats-body
+    .small-number
+      p.number= @checks
+      p.label Checks
+    .small-number
+      p.number= @guests
+      p.label Guests
+    .big-number
+      p.number= @total
+      p.label Revenue

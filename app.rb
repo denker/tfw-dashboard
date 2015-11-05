@@ -30,9 +30,9 @@ get '/stats/:interval/:year/:month/:day' do |interval, year, month, day|
   @interval = valid_params[:interval]
   interval_end = interval_end(@interval, work_date)
 
-  @interval_options = interval_options(work_date)
   @prev_link = stats_link(@interval, prev_interval_start(@interval, work_date))
   @next_link = stats_link(@interval, interval_end)
+  @interval_options = interval_options(work_date)
   @interval_title = interval_title(@interval, work_date)
 
   dm_params = { :time_start.gte => work_date,

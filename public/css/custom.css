@@ -6,3 +6,28 @@
     Purpose of the stylesheet follows.
     To change this template use Tools | Templates.
 */
+
+body {
+  font-family: Verdana, sans-serif;
+  margin: 20px auto;
+  width: 600px;
+}
+
+.stats {
+  margin: auto;
+  width: 300px;
+  text-align: center;
+}
+
+.interval-link {
+  float: left;
+  width: 25%;
+  margin-bottom: 20px;
+}
+
+.interval-link { width: 25%; float: left; }
+.interval-title { width: 50%; float: left; }
+
+.small-number { width: 50%; float: left; margin-bottom: 25px; }
+.small-number .number { font-size: 2em; margin-bottom: 10px; }
+.big-number .number { font-size: 4em; margin-bottom: 10px; }

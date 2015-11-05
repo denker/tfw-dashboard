@@ -72,7 +72,6 @@ GEM
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
-    sqlite3 (1.3.11)
     stringex (1.5.1)
     temple (0.7.6)
     tilt (2.0.1)
@@ -88,7 +87,6 @@ DEPENDENCIES
   rack
   sinatra
   slim
-  sqlite3
 
 BUNDLED WITH
    1.10.6

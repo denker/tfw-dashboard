@@ -35,12 +35,13 @@ form input[type="submit"] {
   text-decoration: underline;
   cursor: pointer; }
 
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.no, .start, .end, .guests, .revenue, .tips, .comment {
-  float:left;
-  margin-right: 15px;
-}
+.row { width: auto; }
+.row:after { content: ""; display: table; clear: both; }
+.odd { background-color: #F7F7F7;}
+[class*='column'] { float: left; padding-left: 10px; margin: 5px 0;}
+.no { padding-left: 13px; width: 5%; }
+.guests { width: 8%; }
+.start, .end, .tips { width: 9%; }
+.revenue { width: 10%; padding-right: 10px; text-align: right; }
+.comment { width: 25%; }
+.controls { padding-left: 0; text-align: right; float: right; width: 20%;}

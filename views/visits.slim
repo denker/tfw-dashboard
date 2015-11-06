@@ -2,17 +2,17 @@ ul
   - @visits.each do |visit|
     li
       - if visit.id != @edit_id
-        span= visit.time_start.strftime('%d.%m %H:%M:%S')
-        span= " Guests: #{visit.male.to_i + visit.female.to_i}, "
+        span= visit.time_start.strftime('%d.%m %H:%M:%S ')
+        span= "Guests: #{visit.male.to_i + visit.female.to_i}, "
         span= "Revenue: #{visit.revenue.to_i}   "
         span
-          a href="/visits/#{visit.id}" Edit
+          a href="/visits/#{visit.id}/" Edit
         span
-          form action="/visits/#{visit.id}" method="POST"
+          form action="/visits/#{visit.id}/" method="POST"
             input type="hidden" name="_method" value="DELETE"
             input type="submit" value="DELETE"
       - else
-        form action="/visits/#{@edit_id}" method="POST"
+        form action="/visits/#{@edit_id}/" method="POST"
           input type="hidden" name="_method" value="PUT"
           label M:
           input type="text" name="visit[male]" value="#{visit.male}"
@@ -25,7 +25,7 @@ ul
           input type="hidden" name="_method" value="DELETE"
           input type="submit" value="DELETE"
     
-form action="/visits/new" method="POST"
+form action="/visits/new/" method="POST"
   label Male:
   input type="text" name="visit[male]"
   label Female:

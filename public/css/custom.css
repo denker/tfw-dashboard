@@ -8,26 +8,39 @@
 */
 
 body {
-  font-family: Verdana, sans-serif;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 18px;
   margin: 20px auto;
   width: 600px;
 }
-
-.stats {
-  margin: auto;
-  width: 300px;
-  text-align: center;
-}
-
-.interval-link {
-  float: left;
-  width: 25%;
-  margin-bottom: 20px;
-}
-
-.interval-link { width: 25%; float: left; }
+/*
+STATS view styles
+*/
+.stats { margin: auto; width: 300px; text-align: center; }
+.interval-link { float: left; width: 25%; margin-bottom: 20px; }
 .interval-title { width: 50%; float: left; }
-
 .small-number { width: 50%; float: left; margin-bottom: 25px; }
 .small-number .number { font-size: 2em; margin-bottom: 10px; }
 .big-number .number { font-size: 4em; margin-bottom: 10px; }
+
+/*
+VISITS view styles
+*/
+form { display:inline; }
+form input[type="submit"] {
+  font-size: 18px;
+  font-family: 'Exo 2', sans-serif;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer; }
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.no, .start, .end, .guests, .revenue, .tips, .comment {
+  float:left;
+  margin-right: 15px;
+}

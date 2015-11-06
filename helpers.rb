@@ -11,7 +11,7 @@ class DateTime
 end
 
 def stats_link(interval, date)
-  "/stats/#{interval}/#{date.year}/#{date.month}/#{date.day}"
+  "/stats/#{interval}/#{date.year}/#{date.month}/#{date.day}/"
 end
 
 def interval_title(interval, work_date)

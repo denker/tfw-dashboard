@@ -1,6 +1,6 @@
 require 'data_mapper'
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://postgres:123456@localhost/tfwdashboard")
 
 class Visit
   include DataMapper::Resource
@@ -14,12 +14,6 @@ class Visit
   property :comment, String
   property :payed_by_card, Boolean, :default => false
   property :amount_payed_by_card, Integer
-end
-
-class Test
-  include DataMapper::Resource
-  property :id, Serial
-  property :text, String
 end
 
 DataMapper.finalize

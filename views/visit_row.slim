@@ -1,0 +1,10 @@
+- visit = locals[:visit]
+span= visit.time_start.strftime('%d.%m %H:%M:%S ')
+span= "Guests: #{visit.male.to_i + visit.female.to_i}, "
+span= "Revenue: #{visit.revenue.to_i}   "
+span
+  a href="/visits/#{visit.id}/" Edit
+span
+  form action="/visits/#{visit.id}/" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="DELETE"

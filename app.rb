@@ -1,5 +1,8 @@
 require 'sinatra'
+require 'sinatra/partial'
 require 'slim'
+
+set :partial_template_engine, :slim
 
 require 'date'
 

@@ -1,7 +1,8 @@
 - visit = locals[:visit]
-.column.no= visit.id
-.column.start= visit.time_start.strftime('%H:%M')
-.column.guests= "#{visit.male.to_i}/#{visit.female.to_i}"
+.column.no= visit.id*10+1
+.column.time= visit.time_start.strftime('%H:%M')
+.column.time= visit.time_end.nil? ? '-' : visit.time_end.strftime('%H:%M')
+.column.guests= "#{visit.male.to_i} / #{visit.female.to_i}"
 .column.revenue= "#{visit.revenue}"
 .column.tips= "#{visit.tips}"
 .column.comment= "#{visit.comment || '-'}"

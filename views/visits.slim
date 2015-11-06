@@ -8,9 +8,28 @@
       - else
         == slim :visit_update, locals: { visit: visit }
     
-form action="/visits/new/" method="POST"
-  label Male:
-  input type="text" name="visit[male]"
-  label Female:
-  input type="text" name="visit[female]"
-  input type="submit" value="NEW GUEST!"
+form.new-visit action="/visits/new/" method="POST"
+  label New guests:
+  select name="visit[male]"
+    option selected="selected" value="0" 0
+    option value="1" 1
+    option value="2" 2
+    option value="3" 3
+    option value="4" 4
+    option value="5" 5
+    option value="6" 6
+    option value="7" 7
+    option value="8" 8
+  label
+    = "/"
+  select name="visit[female]"
+    option value="0" 0
+    option value="1" 1
+    option selected="selected" value="2" 2
+    option value="3" 3
+    option value="4" 4
+    option value="5" 5
+    option value="6" 6
+    option value="7" 7
+    option value="8" 8
+  input type="submit" value="[add visit]"

@@ -3,6 +3,12 @@ DAYS_IN_WEEK = 7
 SUNDAY_WDAY = 0 # Date.wday returns weekday number from 0 (sunday) to 6 (saturday)
 SUNDAY_GOOD_WDAY = 7 # we need wday from 1 (monday) to 7 (sunday), so we change 0 to 7
 
+def minutes_array
+  arr = []
+  12.times { |i| arr << i * 5 }
+  arr
+end
+
 class DateTime
 
   def self.new_date(year, month, day)

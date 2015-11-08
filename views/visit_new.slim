@@ -1,8 +1,10 @@
 form.edit-visit action="/visits/new/" method="POST"
   label New visit at:
+  
+  - # TODO exclude selectors' code to partials
+  - now = DateTime.now.round_time
   select.time name="visit[start_hour]"
-    - now = DateTime.now.round_time
-    - ((now.hour-5)..(now.hour+1)).each do |t|
+    - hour_select_array(now.hour).each do |t|
       - selected = now.hour == t ? 'selected' : nil
       option selected=selected value=t
         = "%02d" % t
@@ -12,7 +14,9 @@ form.edit-visit action="/visits/new/" method="POST"
       - selected = now.minute == t ? 'selected' : nil
       option selected=selected value=t
         = "%02d" % t
+        
   label= ", "
+  
   select name="visit[male]"
     - (0..9).each do |i|
       - selected = i == 0 ? 'selected' : nil
@@ -25,5 +29,7 @@ form.edit-visit action="/visits/new/" method="POST"
       option selected=selected value=i
         = i
   label= " female. "
+  
   input type="text" name="visit[comment]" placeholder="Any comment"
+  
   input type="submit" value="[add visit]"

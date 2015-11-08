@@ -5,6 +5,14 @@ DAYS_IN_WEEK = 7
 SUNDAY_WDAY = 0 # Date.wday returns weekday number from 0 (sunday) to 6 (saturday)
 SUNDAY_GOOD_WDAY = 7 # we need wday from 1 (monday) to 7 (sunday), so we change 0 to 7
 
+def hour_select_array(hour)
+  # makes list for time selector in Visits view
+  array = ((hour-12)..(hour+2)).to_a
+  hour >= 12 ? array.delete_if { |a| a < 12 } : array.delete_if { |a| a >= 12 }
+  array.map! { |h| h < 0 ? h + 24 : h }
+  array
+end
+
 def minutes_array
   arr = []
   12.times { |i| arr << i * 5 }
@@ -17,6 +25,12 @@ class DateTime
 
   def self.new_date(year, month, day)
     DateTime.new(year, month, day, 12, 0, 0, '+3')
+  end
+
+  def self.set_time(hour, minute)
+    date = DateTime.new(Date.today.year, Date.today.month, Date.today.day, hour, minute, 0, '+3')
+    date += 1 if DateTime.now.hour >= 12 && hour < 12
+    date -= 1 if DateTime.now.hour < 12 && hour >= 12
   end
 
   def self.get_work_date

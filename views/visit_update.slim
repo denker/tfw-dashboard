@@ -7,7 +7,7 @@ form.edit-visit action="/visits/#{@edit_id}/" method="POST"
   .column.time
     select.time name="visit[start_hour]"
       - hour = visit.time_start.hour
-      - ((hour-5)..(hour+1)).each do |h|
+      - hour_select_array(hour).each do |h|
         - selected = hour == h ? 'selected' : nil
         option selected=selected value= h
           = "%02d" % h
@@ -22,7 +22,7 @@ form.edit-visit action="/visits/#{@edit_id}/" method="POST"
   .column.time
     select.time name="visit[end_hour]"
       - hour = @time_end.hour
-      - ((hour-5)..(hour+1)).each do |h|
+      - hour_select_array(hour).each do |h|
         - selected = hour == h ? 'selected' : nil
         option selected=selected value= h
           = "%02d" % h

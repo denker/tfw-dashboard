@@ -1,4 +1,4 @@
-form.new-visit action="/visits/new/" method="POST"
+form.edit-visit action="/visits/new/" method="POST"
   label New visit at:
   select.time name="visit[start_hour]"
     - now = DateTime.now.round_time
@@ -17,13 +17,13 @@ form.new-visit action="/visits/new/" method="POST"
     - (0..9).each do |i|
       - selected = i == 0 ? 'selected' : nil
       option selected=selected value=i
-        = "#{i == 0 ? 'no' : i }"
+        = i
   label= " male, "
   select name="visit[female]"
     - (0..9).each do |i|
       - selected = i == 2 ? 'selected' : nil
       option selected=selected value=i
-        = "#{i == 0 ? 'no' : i }"
+        = i
   label= " female. "
   input type="text" name="visit[comment]" placeholder="Any comment"
   input type="submit" value="[add visit]"

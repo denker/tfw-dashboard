@@ -2,7 +2,7 @@
   - @visits.each_index do |i|
     - visit = @visits[i]
     - even = i%2 != 0
-    .row class="#{ even ? 'even' : 'odd'}"
+    .row class="#{ even ? 'even' : 'odd'} #{ 'danger' if visit.id == @edit_id }"
       - if visit.id != @edit_id
         == slim :visit_row, locals: { visit: visit }
       - else

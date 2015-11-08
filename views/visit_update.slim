@@ -1,12 +1,63 @@
-form action="/visits/#{@edit_id}/" method="POST"
+form.edit-visit action="/visits/#{@edit_id}/" method="POST"
   input type="hidden" name="_method" value="PUT"
-  label M:
-  input type="text" name="visit[male]" value="#{visit.male}"
-  label F:
-  input type="text" name="visit[female]" value="#{visit.female}"
-  label CHECK:
-  input type="text" name="visit[revenue]" value="#{visit.revenue}"
-  input type="submit" value="[save]"
-form.delete action="/visits/#{@edit_id}" method="POST"
+  
+  .column.no 
+    label= "%02d" % visit.id
+    
+  .column.time
+    select.time name="visit[start_hour]"
+      - hour = visit.time_start.hour
+      - ((hour-5)..(hour+1)).each do |h|
+        - selected = hour == h ? 'selected' : nil
+        option selected=selected value= h
+          = "%02d" % h
+    label= ":"
+    select.time name="visit[start_minute]"
+      - minute = visit.time_start.minute
+      - minutes_array.each do |m|
+        - selected = minute == m ? 'selected' : nil
+        option selected=selected value= m
+          = "%02d" % m
+  
+  .column.time
+    select.time name="visit[end_hour]"
+      - hour = @time_end.hour
+      - ((hour-5)..(hour+1)).each do |h|
+        - selected = hour == h ? 'selected' : nil
+        option selected=selected value= h
+          = "%02d" % h
+    label= ":"
+    select.time name="visit[end_minute]"
+      - minute = @time_end.minute
+      - minutes_array.each do |m|
+        - selected = minute == m ? 'selected' : nil
+        option selected=selected value= m
+          = "%02d" % m
+          
+  .column.guests
+    select name="visit[male]"
+      - (0..9).each do |i|
+        - selected = i == visit.male ? 'selected' : nil
+        option selected=selected value=i
+          = i
+    label= " / "
+    select name="visit[female]"
+      - (0..9).each do |i|
+        - selected = i == visit.female ? 'selected' : nil
+        option selected=selected value=i
+          = i
+  
+  .column.revenue
+    input type="text" name="visit[revenue]" value="#{visit.revenue}"
+
+  .column.tips
+    input type="text" name="visit[tips]" value="#{visit.tips}"
+
+  .column.comment
+    input type="text" name="visit[comment]" value="#{visit.comment}"
+
+  .column.controls
+    input type="submit" value="[save]"
+form.delete action="/visits/#{visit.id}/" method="POST"
   input type="hidden" name="_method" value="DELETE"
   input type="submit" value="[delete]"

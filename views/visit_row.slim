@@ -1,5 +1,4 @@
-- visit = locals[:visit]
-.column.no= visit.id*10+1
+.column.no= "%02d" % visit.id
 .column.time= visit.time_start.strftime('%H:%M')
 .column.time= visit.time_end.nil? ? '-' : visit.time_end.strftime('%H:%M')
 .column.guests= "#{visit.male.to_i} / #{visit.female.to_i}"

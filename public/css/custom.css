@@ -12,7 +12,7 @@ body {
   font-weight: 300;
   font-size: 18px;
   margin: 20px auto;
-  width: 700px;
+  width: 900px;
 }
 /*
 STATS view styles
@@ -27,7 +27,7 @@ STATS view styles
 /*
 VISITS view styles
 */
-.new-visit select, form input[type="submit"] {
+.edit-visit select, form input[type="submit"] {
   font-size: 18px;
   font-family: 'Exo 2', sans-serif;
   font-weight: 300;
@@ -35,7 +35,21 @@ VISITS view styles
   border: none;
   text-decoration: none;
   cursor: pointer;}
-.new-visit select { background-color: #F7F7F7; font-weight: 500; }
+input[type="text"] {
+  border-style: none;
+  font-size: 16px;
+  font-weight: 300;
+  color: #555;
+}
+.edit-visit select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: auto;
+  text-align: center;
+  font-weight: 500;
+}
 .delete input[type="submit"] { color: #A92626; }
 form { display:inline; }
 
@@ -45,27 +59,20 @@ form { display:inline; }
 .row { width: auto; }
 .row:after { content: ""; display: table; clear: both; }
 .odd { background-color: #F7F7F7;}
+.danger { background-color: #f9e4af; }
+.danger input[type="text"] { background: transparent; }
 [class*='column'] { float: left; padding-left: 10px; margin: 5px 0;}
 .no { padding-left: 13px; width: 5%; }
-.guests { width: 8%; }
-.time, .tips { width: 9%; }
+.guests { width: 8%; text-align: center; }
+.time { width: 9%; text-align: center; }
+.tips { width: 9%; }
+.tips input { width: 100%; font-weight: 500; }
 .revenue { width: 10%; padding-right: 10px; text-align: right; font-weight: 500;}
-.comment { width: 10%; }
-.controls { padding-left: 0; text-align: right; float: right; width: 20%;}
+.revenue input { text-align: right; width: 100%; font-weight: bold; }
+.comment { width: 26%; }
+.controls { padding-left: 0; text-align: right; float: right; width: 13%;}
+.edit-visit .controls { width: 6%; float: left; }
 .controls a { color: #468A46; text-decoration: none; }
-
+.delete input { margin-top: 5px; }
+.controls input { margin-top: 0px; }
 /* visits forms */
-.new-visit select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding-left: 2px;
-    padding-right: 2px;
-    width: auto;
-    text-align: center;
-}
-input[type="text"] {
-  border-style: none;
-  font-size: 16px;
-  font-weight: 300;
-  color: #555;
-}

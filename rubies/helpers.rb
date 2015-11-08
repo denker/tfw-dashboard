@@ -1,3 +1,5 @@
+require 'date'
+
 SECS_IN_DAY = 86400
 DAYS_IN_WEEK = 7
 SUNDAY_WDAY = 0 # Date.wday returns weekday number from 0 (sunday) to 6 (saturday)
@@ -8,6 +10,8 @@ def minutes_array
   12.times { |i| arr << i * 5 }
   arr
 end
+
+# TODO refactor mixins to DateTime and Hash as new classes-wrappers. DateTime -> WorkDate
 
 class DateTime
 

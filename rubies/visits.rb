@@ -3,12 +3,12 @@
 
 get '/visits/' do
   # TODO show only today visits
-  @visits = Visit.all
+  @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
   slim :visits
 end
 
 get '/visits/:id/' do
-  @visits = Visit.all
+  @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
   @edit_id = params[:id].to_i
   @time_end = @visits.get(@edit_id).time_end ? @visits.get(@edit_id).time_end : DateTime.now.round_time
   slim :visits
@@ -21,7 +21,7 @@ delete '/visits/:id/' do
 end
 
 post '/visits/new/' do
-  vp = params[:visit]
+  vp = params[:visit] # TODO refactor visit params hash to automagically update all fields in Visit
   vp.each { |k,v| vp[k] = v.to_i unless k == 'comment' }
   visit = Visit.new
   visit.time_created = DateTime.now

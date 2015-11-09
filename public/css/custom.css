@@ -69,7 +69,7 @@ form { display:inline; }
 .tips input { width: 100%; font-weight: 500; }
 .revenue { width: 10%; padding-right: 10px; text-align: right; font-weight: 500;}
 .revenue input { text-align: right; width: 100%; font-weight: bold; }
-.comment { width: 26%; }
+.comment { width: 26%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .controls { padding-left: 0; text-align: right; float: right; width: 13%;}
 .edit-visit .controls { width: 6%; float: left; }
 .controls a { color: #468A46; text-decoration: none; }

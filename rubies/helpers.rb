@@ -88,11 +88,20 @@ class DateTime
   end
 
   def round_time
-    new_minute = (self.minute/5 + (self.minute % 5 > 2 ? 1 : 0) ) * 5
-    DateTime.new(self.year, self.month, self.day, self.hour, new_minute, 0, '+3')
+    hour = self.hour
+    minute = ( self.minute / 5  + (self.minute % 5 > 2 ? 1 : 0 ) ) * 5
+    begin
+      new_date = DateTime.new(self.year, self.month, self.day, hour, minute, 0, '+3')
+    rescue
+      minute = 0
+      hour = 0 if ( hour += 1 ) == 25
+      new_date = DateTime.new(self.year, self.month, self.day, hour, minute, 0, '+3')
+      self.hour == 23 && hour == 0 ? new_date += 1 : new_date
+    end
   end
 
 end
+
 
 class String
   def fix

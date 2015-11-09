@@ -20,15 +20,16 @@ delete '/visits/:id/' do
 end
 
 post '/visits/new/' do
-  vp = params[:visit] # TODO refactor visit params hash to automagically update all fields in Visit
+  puts vp = params[:visit] # TODO refactor visit params hash to automagically update all fields in Visit
   vp.each { |k,v| vp[k] = v.to_i unless k == 'comment' }
+  puts vp
   visit = Visit.new
   visit.time_created = DateTime.now
-  visit.time_start = DateTime.set_time(vp[:start_hour], vp[:start_minute])
+  puts visit.time_start = DateTime.set_time(vp['start_hour'], vp['start_minute'])
   visit.male = vp[:male]
   visit.female = vp[:female]
   visit.comment = vp[:comment]
-  visit.save
+  puts visit.save
   redirect to('/visits/')
 end
 
@@ -37,7 +38,7 @@ put '/visits/:id/' do
   vp.each { |k,v| vp[k] = v.to_i unless k == 'comment' }
   visit = Visit.get(params[:id])
   visit.time_start = DateTime.set_time(vp[:start_hour], vp[:start_minute])
-  visit.time_end = DateTime.parse(vp[:end_hour], vp[:end_minute])
+  visit.time_end = DateTime.set_time(vp[:end_hour], vp[:end_minute]) # TODO add validation for time_end > time_start
   visit.revenue = vp[:revenue]
   visit.tips = vp[:tips]
   visit.male = vp[:male]

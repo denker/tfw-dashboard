@@ -31,6 +31,7 @@ class DateTime
     date = DateTime.new(Date.today.year, Date.today.month, Date.today.day, hour, minute, 0, '+3')
     date += 1 if DateTime.now.hour >= 12 && hour < 12
     date -= 1 if DateTime.now.hour < 12 && hour >= 12
+    date
   end
 
   def self.get_work_date

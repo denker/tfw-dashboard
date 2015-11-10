@@ -11,10 +11,9 @@ class Visit
   property :male, Integer, :default => 0
   property :female, Integer, :default => 0
   property :revenue, Integer, :default => 0
+  property :bycard, Integer, :default => 0
   property :tips, Integer, :default => 0
   property :comment, String
-  property :payed_by_card, Boolean, :default => false
-  property :amount_payed_by_card, Integer
 end
 
 DataMapper.finalize

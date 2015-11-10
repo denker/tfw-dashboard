@@ -1,63 +1,32 @@
 form.edit-visit action="/visits/#{@edit_id}/" method="POST"
   input type="hidden" name="_method" value="PUT"
-  
   .column.no 
     label= "%02d" % visit.id
-    
-  .column.time
-    select.time name="visit[start_hour]"
-      - hour = visit.time_start.hour
-      - hour_select_array(hour).each do |h|
-        - selected = hour == h ? 'selected' : nil
-        option selected=selected value= h
-          = "%02d" % h
-    label= ":"
-    select.time name="visit[start_minute]"
-      - minute = visit.time_start.minute
-      - minutes_array.each do |m|
-        - selected = minute == m ? 'selected' : nil
-        option selected=selected value= m
-          = "%02d" % m
-  
-  .column.time
-    select.time name="visit[end_hour]"
-      - hour = @time_end.hour
-      - hour_select_array(hour).each do |h|
-        - selected = hour == h ? 'selected' : nil
-        option selected=selected value= h
-          = "%02d" % h
-    label= ":"
-    select.time name="visit[end_minute]"
-      - minute = @time_end.minute
-      - minutes_array.each do |m|
-        - selected = minute == m ? 'selected' : nil
-        option selected=selected value= m
-          = "%02d" % m
-          
+  .column.time== slim :visit_time, locals: { time: visit.time_start, type: "start" }
+  .column.time== slim :visit_time, locals: { time: visit.time_end, type: "end" }
   .column.guests
     select name="visit[male]"
       - (0..9).each do |i|
         - selected = i == visit.male ? 'selected' : nil
         option selected=selected value=i
           = i
-    label= " / "
+    label= "/"
     select name="visit[female]"
       - (0..9).each do |i|
         - selected = i == visit.female ? 'selected' : nil
         option selected=selected value=i
           = i
-  
   .column.revenue
     input type="text" name="visit[revenue]" value="#{visit.revenue}"
-
+  .column.revenue
+    input type="text" name="visit[bycard]" value="#{visit.bycard}"
   .column.tips
     input type="text" name="visit[tips]" value="#{visit.tips}"
-
   .column.comment
     input type="text" name="visit[comment]" value="#{visit.comment}"
-
-  .column.controls
-    input type="submit" value="[save]"
-form.delete action="/visits/#{visit.id}/" method="POST"
-  input type="hidden" name="_method" value="DELETE"
-  input type="submit" value="[delete]"
+  .column.control
+    button type="submit" name="action" value="save"
+      span.glyphicon.glyphicon-floppy-disk
+  .column.control
+    button type="submit" name="action" value="gone"
+      span.glyphicon.glyphicon-share-alt

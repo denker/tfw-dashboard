@@ -5,18 +5,29 @@ DAYS_IN_WEEK = 7
 SUNDAY_WDAY = 0 # Date.wday returns weekday number from 0 (sunday) to 6 (saturday)
 SUNDAY_GOOD_WDAY = 7 # we need wday from 1 (monday) to 7 (sunday), so we change 0 to 7
 
-def hour_select_array(hour)
+def hour_select_array(hour, end_time = false)
   # makes list for time selector in Visits view
+  hour = DateTime.now.hour if hour == -1
   array = ((hour-4)..(hour+1)).to_a
   hour >= 12 ? array.delete_if { |a| a < 12 } : array.delete_if { |a| a >= 12 }
   array.map! { |h| h < 0 ? h + 24 : h }
-  array
+  end_time ? [-1] + array : array
 end
 
-def minutes_array
+def minutes_select_array(end_time = false)
   arr = []
+  arr << -1 if end_time
   12.times { |i| arr << i * 5 }
   arr
+end
+
+class NilClass
+  def hour
+    -1
+  end
+  def minute
+    -1
+  end
 end
 
 # TODO refactor mixins to DateTime and Hash as new classes-wrappers. DateTime -> WorkDate
@@ -28,9 +39,13 @@ class DateTime
   end
 
   def self.set_time(hour, minute)
-    date = DateTime.new(Date.today.year, Date.today.month, Date.today.day, hour, minute, 0, '+3')
-    date += 1 if DateTime.now.hour >= 12 && hour < 12
-    date -= 1 if DateTime.now.hour < 12 && hour >= 12
+    if hour == -1 || minute== -1
+      date = nil
+    else
+      date = DateTime.new(Date.today.year, Date.today.month, Date.today.day, hour, minute, 0, '+3')
+      date += 1 if DateTime.now.hour >= 12 && hour < 12
+      date -= 1 if DateTime.now.hour < 12 && hour >= 12
+    end
     date
   end
 
@@ -88,8 +103,16 @@ class DateTime
   end
 
   def round_time
-    new_minute = (self.minute/5 + (self.minute % 5 > 2 ? 1 : 0) ) * 5
-    DateTime.new(self.year, self.month, self.day, self.hour, new_minute, 0, '+3')
+    hour = self.hour
+    minute = ( self.minute / 5  + (self.minute % 5 > 2 ? 1 : 0 ) ) * 5
+    if minute < 60
+      new_date = DateTime.new(self.year, self.month, self.day, hour, minute, 0, '+3')
+    else
+      minute = 0
+      hour = 0 if ( hour += 1 ) > 23
+      new_date = DateTime.new(self.year, self.month, self.day, hour, minute, 0, '+3')
+      self.hour == 23 && hour == 0 ? new_date += 1 : new_date
+    end
   end
 
 end

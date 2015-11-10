@@ -1,4 +1,13 @@
 .grid
+  .row.heading
+    .column.no #
+    .column.time Start
+    .column.time Leave
+    .column.guests M / F
+    .column.revenue Total $
+    .column.revenue By card
+    .column.tips Tips
+    .column.comment Comment
   - @visits.each_index do |i|
     - visit = @visits[i]
     - even = i%2 != 0
@@ -7,5 +16,10 @@
         == slim :visit_row, locals: { visit: visit }
       - else
         == slim :visit_update, locals: { visit: visit }
+      form.column.control action="/visits/#{visit.id}/" method="POST"
+        input type="hidden" name="_method" value="DELETE"
+        button type="submit"
+          span.glyphicon.glyphicon-remove
+
 
 == slim :visit_new

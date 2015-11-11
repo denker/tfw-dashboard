@@ -1,7 +1,7 @@
 form.edit-visit action="/visits/#{@edit_id}/" method="POST"
   input type="hidden" name="_method" value="PUT"
   .column.no 
-    label= "%02d" % visit.id
+    label= "%02d" % number
   .column.time== slim :visit_time, locals: { time: visit.time_start, type: "start" }
   .column.time== slim :visit_time, locals: { time: visit.time_end, type: "end" }
   .column.guests

@@ -50,8 +50,8 @@ class DateTime
   end
 
   def self.get_work_date
-    date_delimeter = DateTime.new_date(Date.today.year, Date.today.month, Date.today.day)
-    date_start = DateTime.now >= date_delimeter ? date_delimeter : date_delimeter - 1
+    delimeter = DateTime.new_date(Date.today.year, Date.today.month, Date.today.day)
+    DateTime.now >= delimeter ? delimeter : delimeter - 1
   end
 
   def week_start

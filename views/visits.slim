@@ -11,11 +11,11 @@
   - @visits.each_index do |i|
     - visit = @visits[i]
     - even = i%2 != 0
-    .row class="#{ even ? 'even' : 'odd'}#{ ' danger' if visit.id == @edit_id }"
+    .row id="#{visit.id}" class="#{ even ? 'even' : 'odd'}#{ ' danger' if visit.id == @edit_id }"
       - if visit.id != @edit_id
-        == slim :visit_row, locals: { visit: visit }
+        == slim :visit_row, locals: { number: i + 1, visit: visit }
       - else
-        == slim :visit_update, locals: { visit: visit }
+        == slim :visit_update, locals: { number: i + 1, visit: visit }
       form.column.control action="/visits/#{visit.id}/" method="POST"
         input type="hidden" name="_method" value="DELETE"
         button type="submit" title="Remove visit"

@@ -1,12 +1,19 @@
-.column.no= "%02d" % visit.id
+.column.no= "%02d" % number
 .column.time= visit.time_start.strftime('%H:%M')
 .column.time= visit.time_end.nil? ? '-' : visit.time_end.strftime('%H:%M')
 .column.guests= "#{visit.male.to_i} / #{visit.female.to_i}"
 .column.revenue= "#{visit.revenue}"
+.column.revenue= "#{visit.bycard}"
 .column.tips= "#{visit.tips}"
 .column.comment= "#{visit.comment || '-'}"
-.column.controls
-  a href="/visits/#{visit.id}/" [edit]
-  form.delete action="/visits/#{visit.id}/" method="POST"
-    input type="hidden" name="_method" value="DELETE"
-    input type="submit" value="[delete]"
+.column.control
+  a href="/visits/#{visit.id}/" title="Edit visit"
+    span.glyphicon.glyphicon-edit
+- if visit.time_end.nil?
+  form.column.control action="/visits/#{visit.id}/" method="POST"
+    input type="hidden" name="_method" value="PATCH" 
+    button type="submit" title="Save and mark gone"
+      span.glyphicon.glyphicon-share-alt
+- else
+  .column.control.disabled
+    span.glyphicon.glyphicon-share-alt

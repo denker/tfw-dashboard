@@ -27,7 +27,7 @@ STATS view styles
 /*
 VISITS view styles
 */
-.edit-visit select, form input[type="submit"] {
+.edit-visit select, form input[type="submit"], button {
   font-size: 18px;
   font-family: 'Exo 2', sans-serif;
   font-weight: 300;
@@ -36,11 +36,45 @@ VISITS view styles
   text-decoration: none;
   cursor: pointer;}
 input[type="text"] {
-  border-style: none;
-  font-size: 16px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 18px;
   font-weight: 300;
+  border-style: none;
   color: #555;
 }
+form { display:inline; }
+
+/* visits table */
+/* grid inspired by https://css-tricks.com/dont-overthink-it-grids/ */
+.grid { margin-bottom: 20px;}
+.odd { background-color: #F7F7F7;}
+.row { width: auto; }
+.row:hover { background-color: #fbf6ec; }
+.row:after { content: ""; display: table; clear: both; }
+.danger { background-color: #f9e4af; }
+.danger:hover { background-color: #f9e4af; }
+.danger input[type="text"] { background: transparent; }
+.row.heading { background-color: #D6D6D6; font-weight: 500; }
+.row.heading:hover { background-color: #D6D6D6;}
+
+[class*='column'] { float: left; margin: 5px 0;}
+.no { width: 30px; padding-left: 10px; }
+.guests, .time { width: 80px; text-align: center; }
+.revenue { width: 85px; text-align: right; font-weight: 500;}
+.revenue input { text-align: right; width: 100%; font-weight: 500; }
+.tips { width: 55px; padding-left: 20px;}
+.tips input { width: 100%; font-weight: 500; font-weight: 300; }
+.comment { width: 265px; padding-right: 10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.control { padding-left: 0; width: 31px; text-align: center; color: #868686; }
+.danger .control { color: #868686; }
+.control:hover { color: black; }
+.control a { color: inherit; text-decoration: none; padding: 1px 6px;}
+.control button { color: inherit; }
+.control.disabled, .control.disabled:hover { color: #ccc8c8; }
+
+.add-visit .time { width: 160px;}
+.add-visit .comment { width: 573px; }
+
 .edit-visit select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -50,29 +84,3 @@ input[type="text"] {
   text-align: center;
   font-weight: 500;
 }
-.delete input[type="submit"] { color: #A92626; }
-form { display:inline; }
-
-/* visits table */
-/* grid inspired by https://css-tricks.com/dont-overthink-it-grids/ */
-.grid { margin-bottom: 20px;}
-.row { width: auto; }
-.row:after { content: ""; display: table; clear: both; }
-.odd { background-color: #F7F7F7;}
-.danger { background-color: #f9e4af; }
-.danger input[type="text"] { background: transparent; }
-[class*='column'] { float: left; padding-left: 10px; margin: 5px 0;}
-.no { padding-left: 13px; width: 5%; }
-.guests { width: 8%; text-align: center; }
-.time { width: 9%; text-align: center; }
-.tips { width: 9%; }
-.tips input { width: 100%; font-weight: 500; }
-.revenue { width: 10%; padding-right: 10px; text-align: right; font-weight: 500;}
-.revenue input { text-align: right; width: 100%; font-weight: bold; }
-.comment { width: 26%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.controls { padding-left: 0; text-align: right; float: right; width: 13%;}
-.edit-visit .controls { width: 6%; float: left; }
-.controls a { color: #468A46; text-decoration: none; }
-.delete input { margin-top: 5px; }
-.controls input { margin-top: 0px; }
-/* visits forms */

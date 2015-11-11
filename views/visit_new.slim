@@ -1,35 +1,22 @@
-form.edit-visit action="/visits/new/" method="POST"
-  label New visit at:
-  
-  - # TODO exclude selectors' code to partials
-  - now = DateTime.now.round_time
-  select.time name="visit[start_hour]"
-    - hour_select_array(now.hour).each do |t|
-      - selected = now.hour == t ? 'selected' : nil
-      option selected=selected value=t
-        = "%02d" % t
-  label= ":"
-  select.time name="visit[start_minute]"
-    - minutes_array.each do |t|
-      - selected = now.minute == t ? 'selected' : nil
-      option selected=selected value=t
-        = "%02d" % t
-        
-  label= ", "
-  
-  select name="visit[male]"
-    - (0..9).each do |i|
-      - selected = i == 0 ? 'selected' : nil
-      option selected=selected value=i
-        = i
-  label= " male, "
-  select name="visit[female]"
-    - (0..9).each do |i|
-      - selected = i == 2 ? 'selected' : nil
-      option selected=selected value=i
-        = i
-  label= " female. "
-  
-  input type="text" name="visit[comment]" placeholder="Any comment"
-  
-  input type="submit" value="[add visit]"
+form.edit-visit.add-visit action="/visits/new/" method="POST"
+  .column.no
+    span.glyphicon.glyphicon-play
+  .column.time
+    == slim :visit_time, locals: { time: DateTime.now.round_time, type: "start" }
+  .column.guests
+    select name="visit[male]"
+      - (0..9).each do |i|
+        - selected = i == 0 ? 'selected' : nil
+        option selected=selected value=i
+          = i
+    label= "/"
+    select name="visit[female]"
+      - (0..9).each do |i|
+        - selected = i == 2 ? 'selected' : nil
+        option selected=selected value=i
+          = i
+  .column.comment
+    input type="text" name="visit[comment]" placeholder="Any comment"
+  .column.control
+    button type="submit" value="[add visit]" title="Add new visit"
+      span.glyphicon.glyphicon-plus

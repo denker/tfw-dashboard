@@ -44,6 +44,7 @@ put '/visits/:id/' do
     visit.time_end = DateTime.now.round_time
   end
   visit.revenue = vp[:revenue]
+  visit.bycard = vp[:bycard]
   visit.tips = vp[:tips]
   visit.male = vp[:male]
   visit.female = vp[:female]

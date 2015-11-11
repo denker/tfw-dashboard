@@ -3,16 +3,17 @@
 .column.time= visit.time_end.nil? ? '-' : visit.time_end.strftime('%H:%M')
 .column.guests= "#{visit.male.to_i} / #{visit.female.to_i}"
 .column.revenue= "#{visit.revenue}"
-.column.revenue= "#{visit.revenue}"
+.column.revenue= "#{visit.bycard}"
 .column.tips= "#{visit.tips}"
 .column.comment= "#{visit.comment || '-'}"
 .column.control
-  a href="/visits/#{visit.id}/"
+  a href="/visits/#{visit.id}/" title="Edit visit"
     span.glyphicon.glyphicon-edit
-form.column.control action="/visits/#{visit.id}/" method="POST"
-    input type="hidden" name="_method" value="PATCH"
-    button type="submit"
+- if visit.time_end.nil?
+  form.column.control action="/visits/#{visit.id}/" method="POST"
+    input type="hidden" name="_method" value="PATCH" 
+    button type="submit" title="Save and mark gone"
       span.glyphicon.glyphicon-share-alt
-      
-  
-    
+- else
+  .column.control.unable
+    span.glyphicon.glyphicon-share-alt

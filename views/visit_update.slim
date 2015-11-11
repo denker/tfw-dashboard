@@ -25,8 +25,12 @@ form.edit-visit action="/visits/#{@edit_id}/" method="POST"
   .column.comment
     input type="text" name="visit[comment]" value="#{visit.comment}"
   .column.control
-    button type="submit" name="action" value="save"
+    button type="submit" name="action" value="save" title="Save data"
       span.glyphicon.glyphicon-floppy-disk
   .column.control
-    button type="submit" name="action" value="gone"
-      span.glyphicon.glyphicon-share-alt
+    - if visit.time_end.nil?
+      button type="submit" name="action" value="gone" title="Save and set leave time"
+        span.glyphicon.glyphicon-share-alt
+    - else
+      .unable
+        span.glyphicon.glyphicon-share-alt

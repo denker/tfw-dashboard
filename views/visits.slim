@@ -18,8 +18,7 @@
         == slim :visit_update, locals: { visit: visit }
       form.column.control action="/visits/#{visit.id}/" method="POST"
         input type="hidden" name="_method" value="DELETE"
-        button type="submit"
+        button type="submit" title="Remove visit"
           span.glyphicon.glyphicon-remove
-
-
+          
 == slim :visit_new

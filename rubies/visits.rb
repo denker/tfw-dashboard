@@ -49,7 +49,7 @@ put '/visits/:id/' do
   visit.male = vp[:male]
   visit.female = vp[:female]
   visit.comment = vp[:comment]
-  visit.save
+  puts visit.save
   redirect to('/visits/')
 end
 

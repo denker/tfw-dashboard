@@ -3,8 +3,8 @@
 .column.time= visit.time_end.nil? ? '-' : visit.time_end.strftime('%H:%M')
 .column.guests= "#{visit.male.to_i} / #{visit.female.to_i}"
 .column.revenue= "#{visit.revenue}"
-.column.revenue= "#{visit.bycard}"
 .column.tips= "#{visit.tips}"
+.column.tips= "#{ visit.bycard == 0 ? '' : visit.bycard }"
 .column.comment= "#{visit.comment || '-'}"
 .column.control
   a href="/visits/#{visit.id}/" title="Edit visit"

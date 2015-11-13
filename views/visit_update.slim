@@ -34,3 +34,8 @@ form.edit-visit action="/visits/#{@edit_id}/" method="POST"
     - else
       .disabled
         span.glyphicon.glyphicon-share-alt
+.column.control
+  form action="/visits/#{visit.id}/" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    button type="submit" title="Remove visit"
+      span.glyphicon.glyphicon-remove

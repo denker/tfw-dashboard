@@ -12,7 +12,7 @@ body {
   font-weight: 300;
   font-size: 18px;
   margin: 20px auto;
-  width: 900px;
+  width: 1200px;
 }
 /*
 STATS view styles
@@ -47,7 +47,7 @@ form { display:inline; }
 /* visits table */
 /* grid inspired by https://css-tricks.com/dont-overthink-it-grids/ */
 .grid { margin-bottom: 20px;}
-.odd { background-color: #F7F7F7;}
+.even { background-color: #F7F7F7;}
 .row { width: auto; }
 .row:hover { background-color: #fbf6ec; }
 .row:after { content: ""; display: table; clear: both; }
@@ -64,16 +64,18 @@ form { display:inline; }
 .revenue input { text-align: right; width: 100%; font-weight: 500; }
 .tips { width: 55px; padding-left: 10px;}
 .tips input { width: 100%; font-weight: 500; font-weight: 300; }
-.comment { width: 255px; padding-right: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.comment { width: 590px; padding-right: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.comment input {width: 100%;}
 .control { padding-left: 0; width: 31px; text-align: center; color: #868686; }
 .danger .control { color: #868686; }
 .control:hover { color: black; }
 .control a { color: inherit; text-decoration: none; padding: 1px 6px;}
 .control button { color: inherit; }
-.control.disabled, .control.disabled:hover { color: #ccc8c8; }
+.disabled, .disabled:hover { color: #ccc8c8; }
 
-.add-visit .time { width: 160px;}
-.add-visit .comment { width: 573px; }
+.add-visit .no { width: 110px; }
+.add-visit .time { width: 80px;}
+.add-visit .comment { width: 888px; padding: 0; }
 
 .edit-visit select {
   -webkit-appearance: none;

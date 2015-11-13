@@ -1,6 +1,5 @@
 form.edit-visit.add-visit action="/visits/new/" method="POST"
-  .column.no
-    span.glyphicon.glyphicon-play
+  .column.no New visit:
   .column.time
     == slim :visit_time, locals: { time: DateTime.now.round_time, type: "start" }
   .column.guests

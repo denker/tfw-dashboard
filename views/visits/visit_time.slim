@@ -1,11 +1,11 @@
-select.select-time name="visit[#{type}_hour]"
+select name="visit[#{type}_hour]"
   - hour = time.hour
   - hour_select_array(hour, hour == -1).each do |h|
     - selected = hour == h ? 'selected' : nil
     option selected=selected value= h
       = h == -1 ? "--" : "%02d" % h
 label= ":"
-select.select-time name="visit[#{type}_minute]"
+select name="visit[#{type}_minute]"
   - minute = time.minute
   - minutes_select_array(minute == -1).each do |h|
     - selected = minute == h ? 'selected' : nil

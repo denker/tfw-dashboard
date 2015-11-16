@@ -1,0 +1,22 @@
+.col-md-1.text-right= "%02d" % number
+.col-md-3.text-center= visit.time_start.strftime('%H:%M')
+.col-md-3.text-center= visit.time_end.nil? ? '-' : visit.time_end.strftime('%H:%M')
+.col-md-3.text-center= "#{visit.male.to_i} / #{visit.female.to_i}"
+.col-md-4.text-right.padding-right-10= "#{visit.revenue}"
+.col-md-3=  "#{visit.tips}"
+.col-md-3=  "#{visit.bycard == 0 ? '' : visit.bycard }"
+.col-md-17= "#{visit.comment || '-'}"
+.col-md-1.control
+    a href="/visits/#{visit.id}/" title="Edit visit"
+      span.glyphicon.glyphicon-edit
+.col-md-1.control  
+  - if visit.time_end.nil?
+    form action="/visits/#{visit.id}/" method="POST"
+      input type="hidden" name="_method" value="PATCH" 
+      button type="submit" title="Save and mark gone"
+        span.glyphicon.glyphicon-share-alt
+  - else
+    .disabled
+      span.glyphicon.glyphicon-share-alt
+.col-md-1.control.disabled
+  span.glyphicon.glyphicon-remove

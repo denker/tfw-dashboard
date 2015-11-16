@@ -1,0 +1,19 @@
+.grid
+  .row.heading
+    .col-md-1.text-right #
+    .col-md-3.text-center Пришёл
+    .col-md-3.text-center Ушёл
+    .col-md-3.text-center М / Ж
+    .col-md-4.text-right.padding-right-10 Выручка
+    .col-md-3 Чай
+    .col-md-3 Картой
+    .col-md-17 Комментарий
+  
+  - @visits.each_index do |i|
+    - visit = @visits[i]
+    - even = i%2 != 0
+    .row id="#{visit.id}" class="#{ even ? 'even' : 'odd'}#{ ' danger' if visit.id == @edit_id }"
+      - if visit.id != @edit_id
+        == slim :'visits/visit_row', locals: { number: i + 1, visit: visit }
+      - else
+        == slim :'visits/visit_update', locals: { number: i + 1, visit: visit }

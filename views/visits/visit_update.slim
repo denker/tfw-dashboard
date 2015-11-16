@@ -1,0 +1,30 @@
+form.edit-visit action="/visits/#{@edit_id}/" method="POST"
+  input type="hidden" name="_method" value="PUT"
+  .col-md-1.control.text-right
+    label= "%02d" % number
+  .col-md-3.control.text-center== slim :'visits/visit_time', locals: { time: visit.time_start, type: "start" }
+  .col-md-3.control.text-center== slim :'visits/visit_time', locals: { time: visit.time_end, type: "end" }
+  .col-md-3.control.text-center== slim :'visits/visit_gender', locals: { male: visit.male, female: visit.female } 
+  .col-md-4
+    input.text-right.padding-right-10 type="text" name="visit[revenue]" value="#{visit.revenue}"
+  .col-md-3
+    input type="text" name="visit[tips]" value="#{visit.tips}"
+  .col-md-3
+    input type="text" name="visit[bycard]" value="#{visit.bycard}"
+  .col-md-17
+    input type="text" name="visit[comment]" value="#{visit.comment}"
+  .col-md-1.control
+      button type="submit" name="action" value="save" title="Save data"
+        span.glyphicon.glyphicon-floppy-disk
+  .col-md-1.control
+      - if visit.time_end.nil?
+        button type="submit" name="action" value="gone" title="Save and set leave time"
+          span.glyphicon.glyphicon-share-alt
+      - else
+        .disabled
+          span.glyphicon.glyphicon-share-alt
+.col-md-1.control
+  form action="/visits/#{visit.id}/" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    button type="submit" title="Remove visit"
+      span.glyphicon.glyphicon-remove

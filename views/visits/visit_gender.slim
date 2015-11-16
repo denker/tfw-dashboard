@@ -1,0 +1,11 @@
+select name="visit[male]"
+  - (0..9).each do |i|
+    - selected = i == male ? 'selected' : nil
+    option selected=selected value=i
+      = i
+label= "/"
+select name="visit[female]"
+  - (0..9).each do |i|
+    - selected = i == female ? 'selected' : nil
+    option selected=selected value=i
+      = i

@@ -1,6 +1,6 @@
 require 'data_mapper'
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://postgres:123456@localhost/tfwdashboard")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://postgres:123456@localhost/tfw")
 DataMapper::Property::String.length(255)
 
 class Visit

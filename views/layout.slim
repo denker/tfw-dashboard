@@ -4,9 +4,13 @@ html
     title TFW Dashboard
     link href='https://fonts.googleapis.com/css?family=Exo+2:300,500&subset=latin,cyrillic' rel='stylesheet' type='text/css'
     link href="/css/glyphicons.css" rel="stylesheet"
-    link href="/css/custom.css" media="screen, projection" rel="stylesheet"
+    link href="/css/bootstrap.css" media="screen, projection" rel="stylesheet"
+    /link href="/css/custom.css" media="screen, projection" rel="stylesheet"
+    link href="/css/user.css" media="screen, projection" rel="stylesheet"
     script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
 
   body
-    == yield 
+    .container
+      == slim :navbar
+      == yield 
     script src="/js/script.js"

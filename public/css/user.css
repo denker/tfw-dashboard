@@ -1,0 +1,35 @@
+body { font-family: 'Exo 2', sans-serif; font-weight: 300; font-size: 18px; }
+input, select{ box-sizing: border-box; }
+label { font-weight: 300; }
+.padding-right-10 { padding-right: 10px; }
+
+.heading { background-color: #D0D0D0; font-weight: 500; }
+.even { background-color: #ECECEC; }
+.danger { background-color: #ffc96e; padding: 2px 0;}
+.danger input { background-color: transparent; width: 100%; border: none;}
+.danger label { margin: 0; }
+
+.grid { margin: 15px 0;}
+.row { padding: 3px 0;}
+.row:hover { background-color: #f5e7cb; }
+.row.danger:hover { background-color: #ffc96e; }
+
+.disabled { color: #a2a2a2; }
+
+.control {
+  display: block;
+  float: left;
+  padding: 0 2px;
+}
+.danger .control button, .danger .control a { padding: 2px 0 0 0;}
+.control button, .control select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: auto;
+  text-align: center;
+  padding: 0;
+}

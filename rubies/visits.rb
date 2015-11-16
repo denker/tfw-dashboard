@@ -3,14 +3,14 @@
 
 get '/visits/' do
   @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
-  slim :visits
+  slim :'visits/visits'
 end
 
 get '/visits/:id/' do
   @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
   @edit_id = params[:id].to_i
   @time_end = @visits.get(@edit_id).time_end
-  slim :visits
+  slim :'visits/visits'
 end
 
 delete '/visits/:id/' do

@@ -1,0 +1,9 @@
+form.add-visit action="/visits/new/" method="POST"
+  .col-md-4 New visit:
+  .col-md-3.control.text-center== slim :'visits/visit_time', locals: { time: DateTime.now.round_time, type: "start" }
+  .col-md-3.control.text-center== slim :'visits/visit_gender', locals: { male: 0, female: 2 } 
+  .col-md-29
+    input type="text" name="visit[comment]" placeholder="Any comment"
+  .col-md-1.control
+    button type="submit" value="[add visit]" title="Add new visit"
+      span.glyphicon.glyphicon-plus

@@ -7,6 +7,10 @@
     .column.revenue Total $
     .column.revenue By card
     .column.tips Tips
+    .column.age Age
+    .column.checkbox title="Any snacks?" S?
+    .column.checkbox title="Any hot meal?" H?
+    .column.checkbox title="First visit ever?" F?
     .column.comment Comment
   - @visits.each_index do |i|
     - visit = @visits[i]
@@ -20,5 +24,5 @@
         input type="hidden" name="_method" value="DELETE"
         button type="submit" title="Remove visit"
           span.glyphicon.glyphicon-remove
-          
+
 == slim :visit_new

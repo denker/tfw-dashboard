@@ -7,5 +7,4 @@ gem 'rack'
 gem 'sinatra'
 gem 'sinatra-partial'
 gem 'data_mapper'
-gem 'pg'
-gem "dm-postgres-adapter"
+gem "dm-mysql-adapter"

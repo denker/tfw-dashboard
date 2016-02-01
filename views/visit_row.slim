@@ -5,13 +5,17 @@
 .column.revenue= "#{visit.revenue}"
 .column.revenue= "#{visit.bycard}"
 .column.tips= "#{visit.tips}"
+.column.age -list-
+.column.checkbox +
+.column.checkbox +
+.column.checkbox +
 .column.comment= "#{visit.comment || '-'}"
 .column.control
   a href="/visits/#{visit.id}/" title="Edit visit"
     span.glyphicon.glyphicon-edit
 - if visit.time_end.nil?
   form.column.control action="/visits/#{visit.id}/" method="POST"
-    input type="hidden" name="_method" value="PATCH" 
+    input type="hidden" name="_method" value="PATCH"
     button type="submit" title="Save and mark gone"
       span.glyphicon.glyphicon-share-alt
 - else

@@ -1,6 +1,8 @@
 require 'data_mapper'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "mysql://test:123456@localhost/testdb")
+#DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://postgres:123456@localhost/tfw")
+DataMapper::Property::String.length(255)
 
 class Visit
   include DataMapper::Resource

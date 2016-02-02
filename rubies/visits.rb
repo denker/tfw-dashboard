@@ -5,14 +5,14 @@ require 'ap'
 
 get '/visits/' do
   @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
-  slim :visits
+  slim :'visits'
 end
 
 get '/visits/:id/' do
   @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
   @edit_id = params[:id].to_i
   @time_end = @visits.get(@edit_id).time_end
-  slim :visits
+  slim :'visits'
 end
 
 delete '/visits/:id/' do
@@ -54,7 +54,6 @@ put '/visits/:id/' do
   visit.if_hot_meal = vp.has_key? "if_hot_meal"
   visit.if_first_visit = vp.has_key? "if_first_visit"
   visit.comment = vp[:comment]
-  visit.save
   redirect to('/visits/')
 end
 

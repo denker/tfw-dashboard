@@ -1,5 +1,7 @@
 .bundle
 data_loader.rb
 test.rb
-*.csv
+require.rb
+*.txt
 *.dump
+*.csv

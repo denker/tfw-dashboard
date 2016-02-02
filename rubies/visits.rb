@@ -52,6 +52,7 @@ put '/visits/:id/' do
   visit.if_hot_meal = vp.has_key? "if_hot_meal"
   visit.if_first_visit = vp.has_key? "if_first_visit"
   visit.comment = vp[:comment]
+  visit.save
   redirect to('/visits/')
 end
 

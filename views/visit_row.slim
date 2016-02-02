@@ -3,12 +3,12 @@
 .column.time= visit.time_end.nil? ? '-' : visit.time_end.strftime('%H:%M')
 .column.guests= "#{visit.male.to_i} / #{visit.female.to_i}"
 .column.revenue= "#{visit.revenue}"
-.column.revenue= "#{visit.bycard}"
 .column.tips= "#{visit.tips}"
-.column.age -list-
-.column.checkbox +
-.column.checkbox +
-.column.checkbox +
+.column.revenue= "#{visit.bycard}"
+.column.age= "#{visit.age}"
+.column.checkbox= "#{ HTMLEntities.new.decode( visit.if_snacks ? '&#10003;' : '&#8901;' ) }"
+.column.checkbox= "#{ HTMLEntities.new.decode( visit.if_hot_meal ? '&#10003;' : '&#8901;' )  }"
+.column.checkbox= "#{ HTMLEntities.new.decode( visit.if_first_visit ? '&#10003;' : '&#8901;' )  }"
 .column.comment= "#{visit.comment || '-'}"
 .column.control
   a href="/visits/#{visit.id}/" title="Edit visit"

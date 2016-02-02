@@ -13,6 +13,10 @@ class Visit
   property :revenue, Integer, :default => 0
   property :bycard, Integer, :default => 0
   property :tips, Integer, :default => 0
+  property :age, String, :default => '--'
+  property :if_snacks, Boolean
+  property :if_hot_meal, Boolean
+  property :if_first_visit, Boolean
   property :comment, String
 end
 

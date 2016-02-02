@@ -1,6 +1,8 @@
 # contorollers for Visit model and /visits/ views
 # works as part of app.rb
 
+require 'ap'
+
 get '/visits/' do
   @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
   slim :visits
@@ -24,7 +26,7 @@ post '/visits/new/' do
   vp.each { |k,v| vp[k] = v.to_i unless k == 'comment' }
   visit = Visit.new
   visit.time_created = DateTime.now
-  visit.time_start = DateTime.set_time(vp['start_hour'], vp['start_minute'])
+  visit.time_start = DateTime.now.round_time
   visit.male = vp[:male]
   visit.female = vp[:female]
   visit.comment = vp[:comment]
@@ -34,8 +36,7 @@ end
 
 put '/visits/:id/' do
   vp = params[:visit]
-  puts params
-  vp.each { |k,v| vp[k] = v.to_i unless k == 'comment' }
+  vp.each { |k,v| vp[k] = v.to_i unless k == 'comment' || k == 'age' }
   visit = Visit.get(params[:id])
   visit.time_start = DateTime.set_time(vp[:start_hour], vp[:start_minute])
   if params[:action] == "save"
@@ -48,6 +49,10 @@ put '/visits/:id/' do
   visit.tips = vp[:tips]
   visit.male = vp[:male]
   visit.female = vp[:female]
+  visit.age = vp[:age]
+  visit.if_snacks = vp.has_key? "if_snacks"
+  visit.if_hot_meal = vp.has_key? "if_hot_meal"
+  visit.if_first_visit = vp.has_key? "if_first_visit"
   visit.comment = vp[:comment]
   visit.save
   redirect to('/visits/')

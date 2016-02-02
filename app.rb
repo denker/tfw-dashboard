@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sinatra/partial'
 require 'slim'
 
+require 'htmlentities' # for html special symbols in views
+
 set :partial_template_engine, :slim
 
 require './rubies/helpers'

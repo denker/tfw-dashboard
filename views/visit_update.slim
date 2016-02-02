@@ -18,18 +18,28 @@ form.edit-visit action="/visits/#{@edit_id}/" method="POST"
           = i
   .column.revenue
     input type="text" name="visit[revenue]" value="#{visit.revenue}"
-  .column.revenue
-    input type="text" name="visit[bycard]" value="#{visit.bycard}"
   .column.tips
     input type="text" name="visit[tips]" value="#{visit.tips}"
-  .column.age -list-
-  .column.checkbox +
-  .column.checkbox +
-  .column.checkbox +
+  .column.revenue
+    input type="text" name="visit[bycard]" value="#{visit.bycard}"
+  .column.age
+    select name="visit[age]"
+      - age_array = ["< 25", "25-35", "35-45", "> 45"]
+      - age_array << visit.age if visit.age == '--'
+      - age_array.each do |value|
+        - selected = value == visit.age ? 'selected' : nil
+        option selected=selected value=value
+          = value
+  .column.checkbox
+    <input type="checkbox" name="visit[if_snacks]" #{ visit.if_snacks ? "checked" : ""}>
+  .column.checkbox
+    <input type="checkbox" name="visit[if_hot_meal]" #{ visit.if_hot_meal ? "checked" : ""}>
+  .column.checkbox
+    <input type="checkbox" name="visit[if_first_visit]" #{ visit.if_first_visit ? "checked" : ""}>
   .column.comment
     input type="text" name="visit[comment]" value="#{visit.comment}"
   .column.control
-    button type="submit" name="action" value="save" title="Save data"
+    button type="submit" id="save-visit-button" name="action" value="save" title="Save data"
       span.glyphicon.glyphicon-floppy-disk
   .column.control
     - if visit.time_end.nil?

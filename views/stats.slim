@@ -6,8 +6,8 @@
           strong= type.capitalize
         - else
           a href= @interval_selector[type]
-            = type.capitalize      
-            
+            = type.capitalize
+
   .interval-header
     .interval-link
       a href="#{@prev_link}" <<
@@ -15,7 +15,7 @@
       span= "#{@interval_title}"
     .interval-link
       a href="#{@next_link}" >>
-            
+
   .stats-body
     .small-number
       p.number= @checks

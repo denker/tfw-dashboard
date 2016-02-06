@@ -1,19 +1,50 @@
 /*
     Document   : public/css/custom.css
-    Created on : 2014-06-04 10:45 AM
+    Created on : 2015-11-10 01:00 AM
     Author     : denker
-    Description:
-    Purpose of the stylesheet follows.
-    To change this template use Tools | Templates.
 */
+
+.clear {
+  clear:both;
+}
 
 body {
   font-family: 'Exo 2', sans-serif;
   font-weight: 300;
   font-size: 18px;
-  margin: 20px auto;
   width: 1200px;
+  margin: auto;
 }
+
+nav {
+  margin-bottom: 20px;
+  background-color: #555;
+  color: #ccc;
+  overflow: auto;
+  position: relative;
+  top: 0;
+}
+nav ul {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  float: left;
+}
+nav a {
+  display: block;
+
+  color: #ccc;
+  text-decoration: none;
+  padding: 3px 15px 7px;
+}
+nav a:hover {
+  background-color: #999;
+  color: #fff;
+}
+
 /*
 STATS view styles
 */

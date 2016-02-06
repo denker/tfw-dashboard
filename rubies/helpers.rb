@@ -172,3 +172,17 @@ def interval_title(interval, work_date)
     work_date.year.to_s
   end
 end
+
+def visit_hash( vp, new, save = nil )
+  vp.each { |k,v| vp[k] = v.to_i unless k == 'comment' || k == 'age' }
+  if new
+    vp[:time_created] = DateTime.now
+    vp[:time_start] = DateTime.now.round_time
+  else
+    vp[:time_start] = DateTime.set_time(vp[:start_hour], vp[:start_minute])
+    vp[:time_end] = save ? DateTime.set_time(vp[:end_hour], vp[:end_minute]) : DateTime.now.round_time
+    ["start_hour", "start_minute", "end_hour", "end_minute"].each { |k| vp.delete k }
+    ["if_snacks", "if_hot_meal", "if_first_visit"].each { |k| vp[k] = vp.has_key?(k) }
+  end
+  vp
+end

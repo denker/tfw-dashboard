@@ -1,8 +1,6 @@
 # contorollers for Visit model and /visits/ views
 # works as part of app.rb
 
-require 'ap'
-
 get '/visits/' do
   @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
   slim :'visits'

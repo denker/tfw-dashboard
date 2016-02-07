@@ -23,7 +23,7 @@
   - else
     - i = 0
     - @visits.each do |pair|
-      .row.date-separator
+      .row.date-separator class="#{ 'empty' if pair.last.size == 0 }"
         .column.comment= pair.first.strftime('%d.%m.%Y')
       - if pair.last.size == 0
         .row.odd

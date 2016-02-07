@@ -22,7 +22,7 @@ get '/reports/' do
 end
 
 get '/history/*' do
-  redirect to '/visits/'
+  slim :dummy_history
 end
 
 get '/stats/' do

@@ -1,7 +1,7 @@
 .column.no= "%02d" % number
-.column.time title="#{visit.time_start.strftime('%d.%m.%Y %H:%M')}"
+.column.time title="#{visit.time_start.strftime('%d.%m.%Y %H:%M') if visit.time_start }"
   = visit.time_start.strftime('%H:%M')
-.column.time title="#{visit.time_end.strftime('%d.%m.%Y %H:%M')}"
+.column.time title="#{visit.time_end.strftime('%d.%m.%Y %H:%M') if visit.time_end }"
   = visit.time_end.nil? ? '-' : visit.time_end.strftime('%H:%M')
 .column.guests= "#{visit.male.to_i} / #{visit.female.to_i}"
 .column.revenue= "#{visit.revenue}"

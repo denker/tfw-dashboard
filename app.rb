@@ -17,6 +17,5 @@ get %r{(/.*[^\/])$} do
 end
 
 get '/reports/' do
-  puts 'Somebody visited REPORTS :)'
   slim :reports
 end

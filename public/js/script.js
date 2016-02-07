@@ -38,3 +38,8 @@ $('#date-separator-control-unchecked').click( function() {
   $('.date-separator').css("display", "block");
   $('.nothing-found').css("display", "block");
 });
+
+$.getJSON( "/reports.json/", function( data ) {
+  var ctx = document.getElementById("dayRevenueChart").getContext("2d");
+  var myBarChart = new Chart(ctx).Line(data, {});
+});

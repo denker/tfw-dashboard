@@ -1,5 +1,7 @@
 require 'sinatra'
+require 'sinatra/flash'
 require 'sinatra/partial'
+require "sinatra/json"
 require 'slim'
 
 require 'htmlentities' # for html special symbols in views
@@ -9,10 +11,11 @@ set :partial_template_engine, :slim
 require './rubies/helpers'
 require './rubies/models' # file with require DataMapper and decriptions of all models
 require './rubies/visits' # contorollers for Visit model and /visits/ views
-#require './rubies/history'
-#require './rubies/stats'
+require './rubies/history'
+require './rubies/stats'
 
 before do
+  headers 'Content-Type' => 'text/html; charset=utf-8'
   @nav = [ %w(/visits/ Today), %w(/history/ History), %w(/stats/ Stats), %w(/reports/ Reports) ]
 end
 
@@ -21,19 +24,33 @@ get %r{(/.*[^\/])$} do
 end
 
 get '/' do
-  @nav = [ [" "] ]
-  slim :main
+  redirect to('/visits/')
+end
+
+get '/reports.json/' do
+  td = Date.today
+  sd = build_work_date(td.year, td.month, td.day) - 31
+  hash = {
+    labels: [],
+    datasets: [ {
+        fillColor: "rgba(210, 210, 210, 0.2)",
+        strokeColor: "rgba(185, 185, 185, 1)",
+        pointColor: "rgba(199, 169, 149, 1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(205, 162, 151, 1)",
+        data: []
+      } ]
+    }
+  30.times do |i|
+    sd += 1
+    hash[:labels] << sd.strftime('%d.%m.%Y')
+    r = Visit.all(:time_start.gt => sd, :time_start.lt => sd + 1).sum(:revenue)
+    hash[:datasets].first[:data] << r.to_i
+  end
+  json hash
 end
 
 get '/reports/' do
-  redirect to '/visits/'
-  #slim :reports
-end
-
-get '/history/*' do
-  slim :dummy_history
-end
-
-get '/stats/' do
-  redirect to '/visits/'
+  slim :reports
 end

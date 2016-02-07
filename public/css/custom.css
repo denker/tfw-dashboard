@@ -89,7 +89,7 @@ form { display:inline; }
 
 .row.control-panel { margin-bottom: 5px; }
 .row.control-panel:hover { background-color: inherit; }
-.row.control-panel input.auto-kal { background-color: #EEFE6D; width: 210px; text-align: center; }
+.row.control-panel input.auto-kal { width: 210px; text-align: center; }
 
 .row.date-separator { background-color: #D3FFD8; color: #51A258; font-weight: bold; }
 .row.date-separator.empty { background-color: #ffd2d2; color: #a25351; font-weight: bold; }

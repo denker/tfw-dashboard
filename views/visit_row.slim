@@ -9,15 +9,18 @@
 .column.checkbox= "#{ HTMLEntities.new.decode( visit.if_snacks ? '&#10003;' : '&#8901;' ) }"
 .column.checkbox= "#{ HTMLEntities.new.decode( visit.if_hot_meal ? '&#10003;' : '&#8901;' )  }"
 .column.checkbox= "#{ HTMLEntities.new.decode( visit.if_first_visit ? '&#10003;' : '&#8901;' )  }"
-.column.comment= "#{visit.comment || '-'}"
-.column.control
-  a href="/visits/#{visit.id}/" title="Edit visit"
-    span.glyphicon.glyphicon-edit
-- if visit.time_end.nil?
-  form.column.control action="/visits/#{visit.id}/" method="POST"
-    input type="hidden" name="_method" value="PATCH"
-    button type="submit" title="Save and mark gone"
+.column class="comment#{ ' no-limits' unless show_controls}"
+  = "#{visit.comment || '-'}"
+
+- if show_controls
+  .column.control
+    a href="/visits/#{visit.id}/" title="Edit visit"
+      span.glyphicon.glyphicon-edit
+  - if visit.time_end.nil?
+    form.column.control action="/visits/#{visit.id}/" method="POST"
+      input type="hidden" name="_method" value="PATCH"
+      button type="submit" title="Save and mark gone"
+        span.glyphicon.glyphicon-share-alt
+  - else
+    .column.control.disabled
       span.glyphicon.glyphicon-share-alt
-- else
-  .column.control.disabled
-    span.glyphicon.glyphicon-share-alt

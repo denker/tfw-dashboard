@@ -17,7 +17,7 @@ body {
 }
 
 nav {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   background-color: #555;
   color: #ccc;
   overflow: auto;
@@ -35,7 +35,6 @@ nav li {
 }
 nav a {
   display: block;
-
   color: #ccc;
   text-decoration: none;
   padding: 3px 15px 7px;
@@ -88,6 +87,14 @@ form { display:inline; }
 .row.heading { background-color: #D6D6D6; font-weight: 500; }
 .row.heading:hover { background-color: #D6D6D6;}
 
+.row.control-panel { margin-bottom: 5px; }
+.row.control-panel:hover { background-color: inherit; }
+.row.control-panel input.auto-kal { background-color: #EEFE6D; width: 210px; text-align: center; }
+
+.row.date-separator { background-color: #FFD5A4; color: white; font-weight: bold; }
+.row.date-separator .comment { margin-left: 55px; }
+#date-separator-control-unchecked { display: none; }
+
 [class*='column'] { float: left; margin: 5px 0;}
 .no { width: 30px; padding-left: 10px; }
 .guests, .time { width: 80px; text-align: center; }
@@ -98,7 +105,9 @@ form { display:inline; }
 .age { width: 75px; text-align: center;}
 .checkbox { width: 40px; text-align: center;}
 .comment { width: 385px; padding-right: 10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.comment.no-limits { width: 480px; }
 .comment input {width: 100%;}
+.nothing-found { width: 100%; font-style: italic; text-align: center;}
 
 .control { padding-left: 0; width: 31px; text-align: center; color: #868686; }
 .danger .control { color: #868686; }

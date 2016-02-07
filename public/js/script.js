@@ -1,10 +1,9 @@
-$('.row').click( function() {
+$('.editable').click( function() {
   // simulates click on edit button when clicked on visit row
   if (this.className.indexOf("danger") == -1) {
     window.location.href = "/visits/" + this.id + "/";
   }
 })
-
 
 // add new record when press enter
 Mousetrap.bind('enter', function(e) {
@@ -17,4 +16,25 @@ Mousetrap.bind('enter', function(e) {
       document.getElementById("add-visit").submit();
     }
   }
+});
+
+$('#filter_dates').click( function() {
+  if ($('#dates_range').length > 0) {
+    var dates = $('#dates_range').val().split(' - ');
+    window.location.href = "/history/" + dates[0] + "/to/" + dates[1] + "/";
+  }
+})
+
+$('#date-separator-control-checked').click( function() {
+  $('#date-separator-control-checked').css("display", "none");
+  $('#date-separator-control-unchecked').css("display", "inline-block");
+  $('.date-separator').css("display", "none");
+  $('.nothing-found').css("display", "none");
+});
+
+$('#date-separator-control-unchecked').click( function() {
+  $('#date-separator-control-unchecked').css("display", "none");
+  $('#date-separator-control-checked').css("display", "inline-block");
+  $('.date-separator').css("display", "block");
+  $('.nothing-found').css("display", "block");
 });

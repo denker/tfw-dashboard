@@ -49,8 +49,9 @@ class DateTime
     date
   end
 
-  def self.get_work_date
-    delimeter = DateTime.new_date(Date.today.year, Date.today.month, Date.today.day)
+  def self.get_work_date(date = Date.today)
+    # get work date from scratch
+    delimeter = DateTime.new_date(date.year, date.month, date.day)
     DateTime.now >= delimeter ? delimeter : delimeter - 1
   end
 
@@ -185,4 +186,28 @@ def visit_hash( vp, new, save = nil )
     ["if_snacks", "if_hot_meal", "if_first_visit"].each { |k| vp[k] = vp.has_key?(k) }
   end
   vp
+end
+
+
+# HISTORY
+
+def parse_single_date(date)
+  date_source = date.split('.')
+  build_work_date(date_source[2], date_source[1], date_source[0])
+end
+
+def parse_dates(array)
+  [ parse_single_date(array.first),
+    parse_single_date(array.last) ]
+end
+
+def group_by_date(visits)
+  result = []
+  first_date = DateTime.get_work_date visits.min(:time_start)
+  last_date =  DateTime.get_work_date visits.max(:time_start)
+  while first_date <= last_date
+    result << [ first_date, visits.all(:time_start.gt => first_date, :time_end.lt => first_date + 1, :order => [ :time_start.asc ])]
+    first_date += 1
+  end
+  result
 end

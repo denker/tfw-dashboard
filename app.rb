@@ -12,8 +12,17 @@ require './rubies/visits' # contorollers for Visit model and /visits/ views
 #require './rubies/history'
 #require './rubies/stats'
 
+before do
+  @nav = [ %w(/visits/ Today), %w(/history/ History), %w(/stats/ Stats), %w(/reports/ Reports) ]
+end
+
 get %r{(/.*[^\/])$} do
   redirect "#{params[:captures].first}/"
+end
+
+get '/' do
+  @nav = [ [" "] ]
+  slim :main
 end
 
 get '/reports/' do

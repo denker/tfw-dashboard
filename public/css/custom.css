@@ -4,9 +4,7 @@
     Author     : denker
 */
 
-.clear {
-  clear:both;
-}
+.clear { clear:both; }
 
 body {
   font-family: 'Exo 2', sans-serif;
@@ -16,34 +14,17 @@ body {
   margin: auto;
 }
 
-nav {
-  margin-bottom: 5px;
-  background-color: #555;
-  color: #ccc;
-  overflow: auto;
-  position: relative;
-  top: 0;
-}
-nav ul {
-  list-style: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-nav li {
-  float: left;
-}
-nav a {
-  display: block;
-  color: #ccc;
-  text-decoration: none;
-  padding: 3px 15px 7px;
-}
-nav a:hover {
-  background-color: #999;
-  color: #fff;
-}
-
+/* NAV partial */
+nav { margin-bottom: 5px; background-color: #555; color: #ccc; overflow: auto; position: relative; top: 0; }
+nav ul { list-style: none; width: 100%; margin: 0; padding: 0; }
+nav li { float: left; }
+nav a { display: block; color: #ccc; text-decoration: none; padding: 3px 15px 7px; }
+nav a:hover { background-color: #999; color: #fff; }
+nav .logo { display: block; color: #fff; font-weight: bold; padding: 3px 15px 7px; }
+nav ul.user li { float: right; }
+nav ul.user li div { padding: 3px 5px 7px; }
+nav ul.user a.signout .glyphicon { display: inline-block; font-size: 14px; padding-right: 5px; }
+nav ul.user a.signout:hover { background-color: inherit; color: white; }
 /*
 STATS view styles
 */
@@ -87,18 +68,15 @@ form { display:inline; }
 .row.heading { background-color: #D6D6D6; font-weight: 500; }
 .row.heading:hover { background-color: #D6D6D6;}
 
+/* rowof controls in history.slim */
 .row.control-panel { margin-bottom: 5px; }
 .row.control-panel:hover { background-color: inherit; }
 .row.control-panel input.auto-kal { width: 210px; text-align: center; }
-
+/* tweaks of Kalendae styles */
 .row.date-separator { background-color: #D3FFD8; color: #51A258; font-weight: bold; }
 .row.date-separator.empty { background-color: #ffd2d2; color: #a25351; font-weight: bold; }
 .row.date-separator .comment { margin-left: 55px; }
 #date-separator-control-unchecked { display: none; }
-
-#ultimatum { position: fixed; width: 1200px; top: 220px; text-align: center; color: #8E1212; z-index: 1000; }
-#dummy-placeholder { background: url('/images/history.png'); background-repeat: no-repeat; height: 618px; }
-#shadow { background-color: rgba(255, 255, 255, 0.8); position: relative; top: 0; left: 0; width: 100%; height: 100%; }
 
 [class*='column'] { float: left; margin: 5px 0;}
 .no { width: 30px; padding-left: 10px; }
@@ -124,13 +102,16 @@ form { display:inline; }
 .add-visit .no { width: 110px; }
 .add-visit .time { width: 80px;}
 .add-visit .comment { width: 888px; padding: 0; }
+.edit-visit select { -webkit-appearance: none; -moz-appearance: none; padding: 0 2px; width: auto; text-align: center; font-weight: 500; }
 
-.edit-visit select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding-left: 2px;
-  padding-right: 2px;
-  width: auto;
-  text-align: center;
-  font-weight: 500;
-}
+/* dummy jumbotrone styles for History view */
+#ultimatum { position: fixed; width: 1200px; top: 220px; text-align: center; color: #8E1212; z-index: 1000; }
+#dummy-placeholder { background: url('/images/history.png'); background-repeat: no-repeat; height: 618px; }
+#shadow { background-color: rgba(255, 255, 255, 0.8); position: relative; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+/* SIGN IN BLOCK */
+.sign-in-block { width: 250px; height: 200px; position: absolute; top:0; bottom: 0; left: 0; right: 0; margin: auto; }
+.sign-in-block h1 { text-align: center; }
+form.sign-in input { width: 238px; border: 1px solid #aaa; font-size: 18px; margin: 1px; padding: 5px; }
+form.sign-in input[type="submit"] { width: 100%; background-color: #2ccd8c; }

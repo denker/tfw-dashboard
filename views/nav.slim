@@ -1,11 +1,15 @@
 nav#navigation
   ul
     li
-      a href="/visits/" Today
+      .logo TFW dashboard
+    - @nav.each do |n|
+      li
+        a href=n.first
+          = n.last
+  ul.user
     li
-      a href="/history/" History
+      a.signout
+        span.glyphicon.glyphicon-off
     li
-      a href="/stats/" Stats
-    - #li
-    - #  a href="/reports/" Reports
+      div Username
 .clear

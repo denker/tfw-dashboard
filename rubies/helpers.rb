@@ -203,12 +203,8 @@ end
 
 def group_by_date(visits, first_date, last_date)
   result = []
-  puts first_date #= DateTime.get_work_date(first_date)
-  puts last_date #=  DateTime.get_work_date(last_date)
-  puts
   while first_date < last_date
     result << [ first_date, visits.all(:time_start.gt => first_date, :time_start.lt => first_date + 1, :order => [ :time_start.asc ])]
-    puts "#{first_date} - #{result.last.last.count}"
     first_date += 1
   end
   result

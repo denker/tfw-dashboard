@@ -3,6 +3,10 @@ GEM
   specs:
     addressable (2.3.8)
     awesome_print (1.6.1)
+    axlsx (2.0.1)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (~> 1.0.0)
     backports (3.6.7)
     bcrypt (3.1.10)
     bcrypt-ruby (3.1.5)
@@ -64,12 +68,16 @@ GEM
     htmlentities (4.3.4)
     json (1.8.3)
     json_pure (1.8.3)
+    mini_portile2 (2.0.0)
     multi_json (1.11.2)
+    nokogiri (1.6.7.2)
+      mini_portile2 (~> 2.0.0.rc2)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rubyzip (1.0.0)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -101,6 +109,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  axlsx
   bcrypt
   data_mapper
   dm-mysql-adapter

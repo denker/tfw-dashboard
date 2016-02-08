@@ -32,3 +32,10 @@
         - pair.last.each do |v|
           .row id="#{v.id}" class="#{ i%2 != 0 ? 'even' : 'odd'}"
             == slim :visit_row, locals: { number: i += 1, visit: v, show_controls: false }
+
+  .row.totals
+    .column.total Totals:
+    .column.guests= "#{@totals[:male]} / #{@totals[:female]}"
+    .column.revenue= @totals[:revenue]
+    .column.tips= @totals[:tips]
+    .column.revenue= @totals[:bycard]

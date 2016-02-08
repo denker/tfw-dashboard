@@ -27,7 +27,7 @@ get '/' do
   redirect to('/visits/')
 end
 
-get '/reports.json/' do
+get '/data.json/' do
   td = Date.today
   sd = build_work_date(td.year, td.month, td.day) - 31
   hash = {

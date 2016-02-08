@@ -39,7 +39,9 @@ $('#date-separator-control-unchecked').click( function() {
   $('.nothing-found').css("display", "block");
 });
 
-$.getJSON( "/reports.json/", function( data ) {
-  var ctx = document.getElementById("dayRevenueChart").getContext("2d");
-  var myBarChart = new Chart(ctx).Line(data, {});
-});
+if ($('canvas#dayRevenueChart').length) {
+  $.getJSON( "/data.json/", function( data ) {
+    var ctx = document.getElementById("dayRevenueChart").getContext("2d");
+    var myBarChart = new Chart(ctx).Line(data, {});
+  });
+}

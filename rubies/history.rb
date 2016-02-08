@@ -1,8 +1,23 @@
+require 'ap'
+
 get '/history/*/to/*/' do
   @dates = params[:splat].join(' - ')
   dates = parse_dates(params[:splat])
-  visits = Visit.all(:time_start.gt => dates.first, :time_start.lt => dates.last + 1)
-  @visits = group_by_date visits
+
+  visits = Visit.all(:time_start.gt => dates.first, :time_start.lte => dates.last + 1)
+  puts 'Source collection times:'
+  visits.each {|v| puts v.time_start }
+  puts
+
+  @visits = group_by_date(visits, dates.first, dates.last + 1)
+  ap @visits#.each {|v| puts v.time_start }
+  @totals = {
+    male: visits.sum(:male),
+    female: visits.sum(:female),
+    revenue: visits.sum(:revenue),
+    tips: visits.sum(:tips),
+    bycard: visits.sum(:bycard)
+  }
   slim :history
 end
 

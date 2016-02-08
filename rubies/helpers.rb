@@ -201,12 +201,14 @@ def parse_dates(array)
     parse_single_date(array.last) ]
 end
 
-def group_by_date(visits)
+def group_by_date(visits, first_date, last_date)
   result = []
-  first_date = DateTime.get_work_date visits.min(:time_start)
-  last_date =  DateTime.get_work_date visits.max(:time_start)
-  while first_date <= last_date
-    result << [ first_date, visits.all(:time_start.gt => first_date, :time_end.lt => first_date + 1, :order => [ :time_start.asc ])]
+  puts first_date #= DateTime.get_work_date(first_date)
+  puts last_date #=  DateTime.get_work_date(last_date)
+  puts
+  while first_date < last_date
+    result << [ first_date, visits.all(:time_start.gt => first_date, :time_start.lt => first_date + 1, :order => [ :time_start.asc ])]
+    puts "#{first_date} - #{result.last.last.count}"
     first_date += 1
   end
   result

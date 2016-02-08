@@ -72,6 +72,10 @@ form { display:inline; }
 .row.control-panel { margin-bottom: 5px; }
 .row.control-panel:hover { background-color: inherit; }
 .row.control-panel input.auto-kal { width: 210px; text-align: center; }
+/* row of totals in history.slim*/
+.row.totals { margin-top: 5px; background-color: rgb(214, 163, 69);}
+.row.totals:hover { background-color: rgb(208, 168, 96); }
+.column.total { font-weight: bold; padding-left: 55px; width: 145px; }
 /* tweaks of Kalendae styles */
 .row.date-separator { background-color: #D3FFD8; color: #51A258; font-weight: bold; }
 .row.date-separator.empty { background-color: #ffd2d2; color: #a25351; font-weight: bold; }

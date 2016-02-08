@@ -12,6 +12,7 @@ gem 'sinatra-contrib'
 gem 'data_mapper'
 gem 'htmlentities'
 gem 'bcrypt'
+gem 'axlsx'
 
 group :development do
   gem 'awesome_print'

@@ -25,6 +25,14 @@ $('#filter_dates').click( function() {
   }
 })
 
+$('#download_visits').click( function() {
+  if ($('#dates_range').length > 0) {
+    var dates = $('#dates_range').val().split(' - ');
+    window.location.href = "/download/" + dates[0] + "/to/" + dates[1] + "/";
+  }
+})
+
+
 $('#date-separator-control-checked').click( function() {
   $('#date-separator-control-checked').css("display", "none");
   $('#date-separator-control-unchecked').css("display", "inline-block");

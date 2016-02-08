@@ -5,10 +5,13 @@
     .column
       input.auto-kal id="dates_range" type="text" value=@dates data-kal="direction: 'past', format: 'DD.MM.YYYY', mode: 'range', months: 3"
     .column.control
-      a href="#"
-        span.glyphicon.glyphicon-filter#filter_dates title="Filter visits by range"
-    .column.control.disabled
-      span.glyphicon.glyphicon-download-alt title="Download as XLSX"
+      span.glyphicon.glyphicon-filter#filter_dates title="Filter visits by range"
+    - if download
+      .column.control
+        span.glyphicon.glyphicon-download-alt#download_visits title="Download as XLSX"
+    - else
+      .column.control.disabled
+        span.glyphicon.glyphicon-download-alt title="Download as XLSX is restricted"
     .column.control.disabled
       span.glyphicon.glyphicon-option-vertical
     .column.control

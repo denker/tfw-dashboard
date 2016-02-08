@@ -2,14 +2,14 @@
 # works as part of app.rb
 
 get '/visits/' do
-  @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
+  @visits = Visit.all(:started_at.gt => DateTime.get_work_date)
   slim :'visits'
 end
 
 get '/visits/:id/' do
-  @visits = Visit.all(:time_start.gt => DateTime.get_work_date)
+  @visits = Visit.all(:started_at.gt => DateTime.get_work_date)
   @edit_id = params[:id].to_i
-  @time_end = @visits.get(@edit_id).time_end
+  @finished_at = @visits.get(@edit_id).finished_at
   slim :'visits'
 end
 
@@ -33,7 +33,7 @@ end
 
 patch '/visits/:id/' do
   visit = Visit.get(params[:id])
-  visit.time_end = DateTime.now.round_time
+  visit.finished_at = DateTime.now.round_time
   visit.save
   redirect to('/visits/')
 end

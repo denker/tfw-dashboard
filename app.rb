@@ -45,7 +45,7 @@ get '/data.json/' do
   30.times do |i|
     sd += 1
     hash[:labels] << sd.strftime('%d.%m.%Y')
-    r = Visit.all(:time_start.gt => sd, :time_start.lt => sd + 1).sum(:revenue)
+    r = Visit.all(:started_at.gt => sd, :started_at.lt => sd + 1).sum(:revenue)
     hash[:datasets].first[:data] << r.to_i
   end
   json hash

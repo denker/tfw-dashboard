@@ -17,8 +17,8 @@ get '/stats/:interval/:year/:month/:day/' do |interval, year, month, day|
   @interval_selector = interval_selector_links(work_date)
   @interval_title = interval_title(@interval, work_date)
 
-  visit_params = { :time_start.gte => work_date,
-                   :time_start.lt => work_date.end_of(@interval)}
+  visit_params = { :started_at.gte => work_date,
+                   :started_at.lt => work_date.end_of(@interval)}
   @total = Visit.sum(:revenue, visit_params).to_i
   @guests = Visit.sum(:male, visit_params).to_i + Visit.sum(:female, visit_params).to_i
   @checks = Visit.count(:revenue, visit_params)

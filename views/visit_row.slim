@@ -1,8 +1,8 @@
 .column.no= "%02d" % number
-.column.time title="#{visit.time_start.strftime('%d.%m.%Y %H:%M') if visit.time_start }"
-  = visit.time_start.strftime('%H:%M')
-.column.time title="#{visit.time_end.strftime('%d.%m.%Y %H:%M') if visit.time_end }"
-  = visit.time_end.nil? ? '-' : visit.time_end.strftime('%H:%M')
+.column.time title="#{visit.started_at.strftime('%d.%m.%Y %H:%M') if visit.started_at }"
+  = visit.started_at.strftime('%H:%M')
+.column.time title="#{visit.finished_at.strftime('%d.%m.%Y %H:%M') if visit.finished_at }"
+  = visit.finished_at.nil? ? '-' : visit.finished_at.strftime('%H:%M')
 .column.guests= "#{visit.male.to_i} / #{visit.female.to_i}"
 .column.revenue= "#{visit.revenue}"
 .column.tips= "#{visit.tips}"
@@ -18,7 +18,7 @@
   .column.control
     a href="/visits/#{visit.id}/" title="Edit visit"
       span.glyphicon.glyphicon-edit
-  - if visit.time_end.nil?
+  - if visit.finished_at.nil?
     form.column.control action="/visits/#{visit.id}/" method="POST"
       input type="hidden" name="_method" value="PATCH"
       button type="submit" title="Save and mark gone"

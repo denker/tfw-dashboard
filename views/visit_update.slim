@@ -2,8 +2,8 @@ form.edit-visit action="/visits/#{@edit_id}/" method="POST"
   input type="hidden" name="_method" value="PUT"
   .column.no
     label= "%02d" % number
-  .column.time== slim :visit_time, locals: { time: visit.time_start, type: "start" }
-  .column.time== slim :visit_time, locals: { time: visit.time_end, type: "end" }
+  .column.time== slim :visit_time, locals: { time: visit.started_at, type: "start" }
+  .column.time== slim :visit_time, locals: { time: visit.finished_at, type: "end" }
   .column.guests
     select name="visit[male]"
       - (0..9).each do |i|
@@ -42,7 +42,7 @@ form.edit-visit action="/visits/#{@edit_id}/" method="POST"
     button type="submit" id="save-visit-button" name="action" value="save" title="Save data"
       span.glyphicon.glyphicon-floppy-disk
   .column.control
-    - if visit.time_end.nil?
+    - if visit.finished_at.nil?
       button type="submit" name="action" value="gone" title="Save and set leave time"
         span.glyphicon.glyphicon-share-alt
     - else

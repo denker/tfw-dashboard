@@ -6,10 +6,10 @@ DataMapper::Property::String.length(255)
 class Visit
   include DataMapper::Resource
   property :id, Serial
-  property :time_created, DateTime, :required => true # TODO change name to :created_at
-  # TODO add property :updated_at, DateTime
-  property :time_start, DateTime
-  property :time_end, DateTime # TODO add validation for time_end > time_start
+  property :created_at, DateTime, :required => true # TODO change name to :created_at
+  property :updated_at, DateTime
+  property :started_at, DateTime
+  property :finished_at, DateTime # TODO add validation for finished_at > started_at
   property :male, Integer, :default => 0
   property :female, Integer, :default => 0
   property :revenue, Integer, :default => 0
@@ -20,6 +20,12 @@ class Visit
   property :if_hot_meal, Boolean
   property :if_first_visit, Boolean
   property :comment, String
+
+  before :valid? do
+    attribute_set(:created_at, DateTime.now) if attribute_get(:created_at).nil?
+    attribute_set(:updated_at, DateTime.now)
+  end
+
 end
 
 DataMapper.finalize

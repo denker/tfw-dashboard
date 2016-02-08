@@ -1,7 +1,7 @@
 get '/history/*/to/*/' do
   @dates = params[:splat].join(' - ')
   dates = parse_dates(params[:splat])
-  visits = Visit.all(:time_start.gt => dates.first, :time_start.lte => dates.last + 1)
+  visits = Visit.all(:started_at.gt => dates.first, :started_at.lte => dates.last + 1)
   @visits = group_by_date(visits, dates.first, dates.last + 1)
   @totals = {
     male: visits.sum(:male),

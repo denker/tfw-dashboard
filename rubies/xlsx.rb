@@ -11,7 +11,7 @@ def make_xlsx(visits)
   p = Axlsx::Package.new
   p.workbook.add_worksheet(:name => "Визиты") do |sheet|
     sheet.add_row columns.values
-    Visit.all.each do |visit|
+    visits.each do |visit|
       data = []
       columns.keys.each do |k|
         value = k != :work_date ? visit[k] : DateTime.get_work_date(visit.started_at)

@@ -1,5 +1,3 @@
-require 'ap'
-
 get '/history/*/to/*/' do
   @dates = params[:splat].join(' - ')
   dates = parse_dates(params[:splat])

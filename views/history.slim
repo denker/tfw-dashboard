@@ -6,14 +6,11 @@
       input.auto-kal id="dates_range" type="text" value=@dates data-kal="direction: 'past', format: 'DD.MM.YYYY', mode: 'range', months: 3"
     .column.control
       span.glyphicon.glyphicon-filter#filter_dates title="Filter visits by range"
-    - if download
-      .column.control
-        span.glyphicon.glyphicon-download-alt#download_visits title="Download as XLSX"
-    .column.control.disabled
-      span.glyphicon.glyphicon-option-vertical
     .column.control
       span.glyphicon.glyphicon-unchecked#date-separator-control-unchecked title="Show date subheadings"
       span.glyphicon.glyphicon-check#date-separator-control-checked title="Hide date subheadings"
+    .column.control
+      span.glyphicon.glyphicon-download-alt#download_visits title="Download as XLSX"
 
   == slim :visit_heading
 
@@ -25,10 +22,7 @@
     - @visits.each do |pair|
       .row.date-separator class="#{ 'empty' if pair.last.size == 0 }"
         .column.comment= pair.first.strftime('%d.%m.%Y')
-      - if pair.last.size == 0
-        .row.odd
-          .column.nothing-found Nobody came that day :(
-      - else
+      - if pair.last.size > 0
         - pair.last.each do |v|
           .row id="#{v.id}" class="#{ i%2 != 0 ? 'even' : 'odd'}"
             == slim :visit_row, locals: { number: i += 1, visit: v, show_controls: false }

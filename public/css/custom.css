@@ -78,7 +78,7 @@ form { display:inline; }
 .column.total { font-weight: bold; padding-left: 55px; width: 145px; }
 /* tweaks of Kalendae styles */
 .row.date-separator { background-color: #D3FFD8; color: #51A258; font-weight: bold; }
-.row.date-separator.empty { background-color: #ffd2d2; color: #a25351; font-weight: bold; }
+.row.date-separator.empty { background-color: #ffd2d2; color: #a25351; font-weight: bold; margin: 3px 0;}
 .row.date-separator .comment { margin-left: 55px; }
 #date-separator-control-unchecked { display: none; }
 

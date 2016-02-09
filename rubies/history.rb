@@ -10,7 +10,7 @@ get '/history/*/to/*/*' do
     tips: visits.sum(:tips),
     bycard: visits.sum(:bycard)
   }
-  slim :history, locals: { download: params[:splat].last == 'dwnld' }
+  slim :history
 end
 
 get '/history/' do

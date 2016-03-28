@@ -11,7 +11,7 @@ end
 
 
 get '/data.json/:range' do
-  # data for chart
+  # data for charts
   hash = {
     labels: [],
     datasets: [

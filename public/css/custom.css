@@ -119,3 +119,31 @@ form { display:inline; }
 .sign-in-block h1 { text-align: center; }
 form.sign-in input { width: 238px; border: 1px solid #aaa; font-size: 18px; margin: 1px; padding: 5px; }
 form.sign-in input[type="submit"] { width: 100%; background-color: #2ccd8c; }
+
+/* REPORTS */
+.reports-header {
+  margin: 20px 0;
+  overflow: hidden;
+}
+.reports-header h3 {
+  float: left;
+  margin: 0;
+}
+.reports-header ul {
+  float: left;
+  margin: 0;
+}
+.reports-header ul li {
+  float: left;
+  display: inline-block;
+  padding: 3px 11px;
+  margin: 0 2px;
+  background-color: rgb(242, 242, 242);
+}
+.reports-header a {
+  color: gray;
+  text-decoration: none;
+}
+.reports-header a:hover {
+  color: black;
+}

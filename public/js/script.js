@@ -48,8 +48,10 @@ $('#date-separator-control-unchecked').click( function() {
 });
 
 if ($('canvas#dayRevenueChart').length) {
-  $.getJSON( "/data.json/", function( data ) {
+  var arr = window.location.href.split('/');
+  var range = arr[arr.length-2];
+  $.getJSON( "/data.json/"+range, function(data) {
     var ctx = document.getElementById("dayRevenueChart").getContext("2d");
-    var myBarChart = new Chart(ctx).Line(data, {});
+    var myBarChart = new Chart(ctx).Bar(data, {scaleShowVerticalLines: false});
   });
 }

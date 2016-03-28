@@ -1,2 +1,11 @@
-h3 Revenue by last 30 days
+.reports-header
+  h3= "Revenue by last 30 #{@range}s"
+  ul
+    li
+      a href="/reports/day/" Days
+    li
+      a href="/reports/week/" Weeks
+    li
+      a href="/reports/month/" Months
+
 canvas#dayRevenueChart width="1200px" height="550px"

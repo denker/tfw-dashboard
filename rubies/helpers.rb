@@ -176,7 +176,7 @@ end
 
 def visit_hash( vp, new, save = nil )
   vp.each { |k,v| vp[k] = v.to_i unless k == 'comment' || k == 'age' }
-  if new    
+  if new
     vp[:started_at] = DateTime.now.round_time
   else
     vp[:started_at] = DateTime.set_time(vp[:start_hour], vp[:start_minute])

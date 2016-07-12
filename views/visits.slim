@@ -1,6 +1,8 @@
+== slim :visit_new
+
 .grid
-  == slim :visit_heading
-  - @visits.each_index do |i|
+  == slim :visit_heading  
+  - (0..@visits.count-1).reverse_each do |i|
     - visit = @visits[i]
     - even = i%2 != 0
     .row id="#{visit.id}" class="#{ even ? 'even' : 'odd'}#{ ' danger' if visit.id == @edit_id } editable"
@@ -12,7 +14,5 @@
         input type="hidden" name="_method" value="DELETE"
         button type="submit" title="Remove visit"
           span.glyphicon.glyphicon-remove
-
-== slim :visit_new
 
 / TODO implement accesskeys: http://www.hanselman.com/blog/TheWebIsTheNewTerminalAreYouUsingTheWebsKeyboardShortcutsAndHotkeys.aspx

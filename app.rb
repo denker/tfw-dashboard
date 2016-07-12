@@ -2,7 +2,6 @@ require 'sinatra'
 require 'sinatra/flash'
 require 'sinatra/partial'
 require "sinatra/json"
-#require "sinatra/streaming"
 require 'slim'
 
 require 'htmlentities' # for html special symbols in views

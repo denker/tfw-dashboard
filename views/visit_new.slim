@@ -1,8 +1,7 @@
 form.edit-visit.add-visit#add-visit action="/visits/" method="POST"
   .column.no
-    span.glyphicon.glyphicon-play
-  .column.time
-    /== slim :visit_time, locals: { time: DateTime.now.round_time, type: "start" }
+    span Add visit:
+    //span.glyphicon.glyphicon-play
   .column.guests
     select name="visit[male]"
       - (0..9).each do |i|

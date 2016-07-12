@@ -1,6 +1,7 @@
 .bundle
 data_loader.rb
 test.rb
+test.html
 require.rb
 *.txt
 *.dump
